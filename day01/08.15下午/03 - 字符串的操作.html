@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset = "utf-8">
+        <meta name = "author" content = "张强">
+        <title>字符串的操作</title>
+        <style>
+            
+        </style>
+    </head>
+    <body>
+        <script>
+            var str = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            console.log(str.length);
+            // .charAt()得到指定位置的字符
+            console.log(str.charAt(1));
+            // 如果指定的位置超出了字符串的长度，会输出空
+            console.log(str.charAt(26));
+            // .repeat()字符串的重复函数，括号内可以指定重复的次数
+            console.log('*^'.repeat(3));
+            // 大小写转换函数
+            console.log('abc'.toUpperCase()); //转换为大写
+            console.log('HTML'.toLowerCase()); //转换为小写
+            // '+'可以连接字符串
+            console.log('HTML5' + 'CSS3' + 'JavaScript');
+            
+            // .anchor()可以创建一个超链接，括号的内容是超链接的name的值
+            // '百度搜索'是超链接的文本内容
+            var aaa = '百度搜索';
+            var tag = aaa.anchor('baidu');
+            console.log(tag);
+            
+            // .concat()可以连接字符串
+            var html5 = 'html', css3 = 'css', js = 'javascript';
+            var sep = '-';
+            console.log(html5.concat(sep, css3, sep, js));
+            // .concat()可以把它的参数添加到数组中，作为数组的元素
+            // 从最后添加，没有排序
+            var arr1 = [1, 9, 3];
+            console.log(arr1.concat(4, 5));
+            // .concat()可以连接两个数组
+            var arr2 = ['HTML5', 'CSS3', 'JavaScript'];
+            var arr3 = ['C', 'C++', 'PHP'];
+            console.log(arr2.concat(arr3));
+            
+            // .endsWith()判断是否以指定的字符(串)结尾
+            var str2 = '我正在学习HTML5，喜欢JavaScript';
+            console.log(str2.endsWith('JavaScript'));
+            console.log(str2.endsWith('HTML5'));
+            // endsWith(1, 2) 参数1表示判断是否是这个字符串结尾
+            // 参数2表示超出该位置的字串符忽略掉(包含该位置)
+            console.log(str2.endsWith('HTML', 9));
+            // .includes()判断是否包含某个子字符串
+            console.log('包含' + str2.includes('喜欢'));
+            console.log('包含' + str2.includes('讨厌'));
+            
+            // .indexOf()返回的是指定的字符串在某个字符串中首次出现的位置
+            console.log('位置' + str2.indexOf('喜欢'));
+            // .lastIndexOf()返回一个指定的字符最后出现的位置
+            var names = 'html5.css3.javascript.php.bootstrap';
+            console.log(names.length);
+            console.log('最后一个.的位置' + names.lastIndexOf('.'));
+            console.log('最后一个a的位置' + names.lastIndexOf('a'));
+            
+            // .replace()可以替换字符串，只会替换一次(首次出现的)
+            var str3 = '我在学习HTML5,喜欢JavaScript,喜欢css3';
+            console.log(str3.replace('喜欢', '讨厌'));
+            // .slice()可以提取字符串，参数是提取的位置(包含该位置)
+            console.log(str3.slice(1));
+            // 参数1是开始的位置(包含该位置), 参数2是结束位置(不包含该位置)
+            console.log(str3.slice(1 ,3));
+            
+            // .split()可以分割字符串，分割后的是一个数组
+            console.log(str3.split(','));
+            // console.dir()以对象的方式输出全部内容，包括属性、方法
+            console.dir(str3.split(','));
+            
+            // 
+            var str4 = 'H1,H2,H3,H4,H5,H6,P,Article,Section,Header,Footer,Div,Span,Ul,Li';
+            console.log(str4.split(','));
+            // 参数1表示以这个字符作为分割符
+            // 参数2表示要返回多少个结果
+            console.log(str4.split(',', 6));
+            
+            // 
+            var str5 = '我正在学习前端开发，它包括HTML、css3、JS';
+            // .substr()截取子字符串
+            // 括号内的参数表示从这个位置开始截取，包含这个位置
+            console.log(str5.substr(3));
+            // 参数2表示截取的长度
+            console.log(str5.substr(3, 6));
+            
+            // .substring(1, 2)
+            // 参数1表示开始位置
+            // 参数2表示结束位置(不包含该位置)
+            console.log(str5.substring(3));
+            console.log(str5.substring(3, 6));
+            // 总结：
+            // substr()返回的是一个从指定位置开始的指定长度的字符串
+            // substring()返回的是指定范围的字符串(str>=开始位置 str<结束位置)
+            
+            // .trim()可以去掉字符串前后的空格，中间无法去掉
+            var str6 = '     HTML5  CSS3  ';
+            console.log(str6.trim());
+            console.log('   我在学习  前端技术  '.trim());
+            
+            //百度logo https://www.baidu.com/img/bd_logo1.png
+        </script>
+    </body>
+</html>

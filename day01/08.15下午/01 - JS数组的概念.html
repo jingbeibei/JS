@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset = "utf-8">
+        <meta name = "author" content = "张强">
+        <title>JS数组</title>
+        <style>
+            
+        </style>
+    </head>
+    <body>
+        <script>
+            // 1 创建一个数组 关键字new + Array() 
+            // 创建时没有指定数组的长度，在下面赋值时再确定。
+            var color = new Array();
+            color[0] = 'black';
+            color[1] = 'white';
+            color[2] = 'green';
+            color[3] = 'red';
+            color[4] = 'blue';
+            color[5] = 'yellow';
+            color[6] = 'orange';
+            // 输出数组的长度
+            console.log(color.length);
+            console.log('-'.repeat(50));
+            // for循环输出数组中的所有元素，访问数组某个元素通过 数组名[索引值] 的形式
+            for(var i = 0; i < color.length; i++){
+                console.log(color[i]);
+            }
+            console.log('-'.repeat(50));
+            // 把数组元素直接写到小括号内
+            var phone = new Array('Nexus5X', 'iphone', 'OPPO', '锤子');
+            console.log(phone.length);
+            
+            // 创建数组时可以省去关键字new，如果确定了元素的个数也可指定数组的容量。
+            var songs = Array(5);
+            songs[0] = 'Waiting for you';
+            songs[1] = '在希望在田野上';
+            songs[2] = 'Yesterday';
+            songs[3] = 'Hello Kitty';
+            songs[4] = 'Yesterday once more';
+            // 输出其中一个元素
+            console.log(songs[3]);
+            console.log(songs[6]);  //数组下标越界，输出undefined
+            console.log('-'.repeat(50));
+            ////////////////////////////////////////////////////
+            
+            // 2 创建数组的另一种形式(字面量语法: 把元素放入一对方括号内)
+            var cars = ['BMW', 'benz', '吉利', 'honda'];
+            console.log(cars.length);
+            // 用字面量语法创建一个空数组
+            var computers = [];
+            console.log(computers.length);
+            console.log('-'.repeat(50));
+            // push()方法向空数组中添加一个元素
+            computers.push('MacBook Pro');
+            computers.push('iMac');
+            // JS数组中的元素类型可以不同
+            computers.push(3); // 添加一个数字
+            computers.push(true); // 添加一个布尔值
+            console.log(computers);
+            
+            // 练习：产生一个随机的学生姓名？？？
+        </script>
+    </body>
+</html>

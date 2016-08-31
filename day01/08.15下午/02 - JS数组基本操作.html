@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset = "utf-8">
+        <meta name = "author" content = "张强">
+        <title>数组对象</title>
+        <style>
+            
+        </style>
+    </head>
+    <body>
+        <div>1111</div>
+        <div>2222</div>
+        <div>3333</div>
+        <div>4444</div>
+        <script>
+            // 数组的声明
+            var arr1 = new Array();
+            var arr2 = [];
+            // 向数组添加元素
+            arr1[0] = 0;
+            arr1[1] = 1;
+            // ...
+            arr1[69] = 69;
+            
+            // 用for循环添加元素
+            for(var i = 0; i < 70; i++){
+                // 向arr2添加70个数字
+                // 如果添加70个人名，无法采用
+                // arr2[i] = i;
+                
+                if(i == 18) continue;
+                // image0.jpg ... image69.jpg
+                arr2[i] = 'image' + i + '.jpg';
+            }
+            console.log(arr2);
+            
+            // .push()在数组的尾部添加元素
+            var arr3 = [1, 2, 3];
+            arr3.push(4);
+            console.log(arr3);
+            
+            // .unshift()在数组开头添加元素
+            arr3.unshift(0);
+            console.log(arr3);
+            
+            // 移除数组元素
+            // .shift()移除数组的第1个元素
+            var n = arr3.shift();
+            console.log(arr3);
+            console.log(n);
+            
+            // .pop移除末尾元素
+            var m = arr3.pop();
+            console.log(arr3);
+            console.log(m);
+            
+            // 得到其中的一个元素
+            // [n]，得到是第n+1个元素
+            var o = arr3[1]; //得到是第2个
+            
+            // 排序
+            // 1 元素是字符串，直接调用sort()
+            var arr4 = ['html', 'css', 'js', 'php'];
+            console.log(arr4.sort());
+            // 2 元素是数字，要用sort(function(a ,b){})
+            var arr5 = [2, 5, 7, 90, 38];
+            console.log(arr5.sort(function(a , b){
+                // 把数字按升序排列
+                return a - b;
+                // 降序排列
+                return b - a;
+            }))
+            // 数组反转reverse()函数
+            
+            //数组中的元素可以是不相同的，也可以是标签 
+            var arr6 = [];
+            var divs = document.querySelectorAll('div');
+            for(var i = 0; i < divs.length; i++){
+                arr6.push(divs[i]);
+            }
+            console.log(arr6);
+            
+            // 数组里放不同的元素
+            // {}在js的语法里代表一个对象
+            // 下面声明一个对象
+            // var stu = {'name' : 'zhangsan', 'age': 3};
+            // arr7里面的元素类型都不相同
+            // 'html' 字符串
+            // 5 数字
+            // true 布尔型
+            // {} 对象
+            var arr7 = ['html5', 5, true, {'name' : 'zhangsan', 'age': 3}]
+            // 如果想找最里层的，顺序是从外向内
+        </script>
+    </body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset = "utf-8">
+        <meta name = "author" content = "张强">
+        <title>JavaScript基本数据类型</title>
+        <style>
+            
+        </style>
+    </head>
+    <body>
+        <!--
+            数据类型：
+            5种简单数据类型，也称为基本数据类型，分别如下：
+            undefined null Boolean Number String
+            1种复杂数据类型，Object(对象)
+            
+            typeof操作符，用来检测给定变量的数据类型，其结果有以下几种情况：
+            undefined 未定义
+            boolean 布尔值
+            string 字符串
+            number 数值
+            object 对象或者Null
+            function 函数
+            
+            var message = 'html5';
+            alert(typeof message); // string
+            alert(typeof (message)); // string
+            alert(typeof 95); // number
+            
+            1 undefined类型
+              var message;  // 仅声明了变量并没有初始化
+              alert(message == undefined);  // true
+              
+              试图输出一个未声明的变量
+              alert(typeof age); // undefined
+              alert(age); // 会发生错误
+              
+            2 null类型
+              null表示一个空对象指针,用typeof检测时会输出object
+              var car = null;
+              alert(typeof car); // object
+              如果定义的变量将来准备用来保存对象，那么最好将它的初始值设为null,
+              这样，只要直接检查null值就可以知道相应的变量是否保存了一个对象的引用
+              
+            3 boolean类型
+              只有两个值：true false，这两个值不数字值不是一回事。
+              因此，true不一定等于1，false不一定等于0
+              布尔类型的值是区分大小写的，例如True False及其它大小写组合的形式都不是boolean
+            4 number类型
+              var intNum = 55; // 整数
+              除了10进制，整数还可以通过8进制或16进制表示。
+              在进行算术运算时，所有8进制和16进制的值最终都将转化为10进制。
+              var floatNum1 = 1.1;
+              var floatNum2 = 0.2;
+              var floatNum3 = .1;  // 不推荐
+              数值的转换：有3个函数可以实现把非数值转换为数值
+              Number() 是一个函数，可以用于任何数据类型
+              parseInt() parseFloat() 专门用于把字符串转换成数值
+              Number(true); // 1
+              Number(false); // 0
+              Number(null); // 0
+              Number(NaN); // NaN(Not a Number)
+              Number('1'); // 1
+              Number('123'); // 123
+              Number('011'); // 11
+              Number(''); // 0
+              Number('hello world'); // NaN
+              
+            5 string类型
+              字符串可以由双引号或单引号表示，下面的写法是等效的
+              var firstName = 'Michael';
+              var lastName = "Michael";
+              字符串不可变的，一旦创建，它的值是不能改变的。
+              转换为字符串：
+              var age = 11;
+              var ageAsString = age.toString();  // '11'
+              var found = true;
+              var foundAsString = found.toString(); // 'true'
+              
+            6 object类型
+              一组数据和功能的集合，可以通过new操作符跟要创建的对象类型名称来创建
+              var o = new Object();
+              在不传入参数的情况下，可以写成var o = new Object; // 不推荐
+              
+        -->
+    </body>
+</html>

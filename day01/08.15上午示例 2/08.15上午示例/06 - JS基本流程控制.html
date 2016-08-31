@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="author" content="张强">
+		<title>JS基本流程控制</title>
+	</head>
+	<body>
+		<script>
+		
+//			var score = 61
+//			分支语句
+//			if (score >= 60) {
+//				alert('及格')
+//			} else{
+//				alert('不及格')
+//			}
+
+//			var score = 61
+//			var 及格 = '恭喜您及格了！'
+//			var 不及格 = '很遗憾，您没有通过考试！'
+//			注意变量名可以使用中文，但不建议这样写			
+//			如果不定义上面两个变量，则会报错，在控制台可以看到错误
+//			if (score >= 60) {
+//				alert(及格)
+//			} else{
+//				alert(不及格)
+//			}
+			
+			
+//			var week = 1
+//			
+//			一个复杂的分支语句
+//			if (week == 1) {
+//				alert('星期一')
+//			} else {
+//				if (week == 2) {
+//					alert('星期二')
+//				} else {
+//					if (week == 3) {
+//						alert('星期三')
+//					} else {
+//						if (week == 4) {
+//							alert('星期四')
+//						} else {
+//							 if (week == 5) {
+//								alert('星期五')
+//							} else {
+//								if (week == 6) {
+//									alert('星期六')
+//								} else {
+//									if (week == 7) {
+//										alert('星期日')
+//									} else{
+//										alert('不知道')
+//									}
+//								}
+//							}
+//						}
+//					}
+//				}
+//			} 	
+			
+//			尝试将上面的 week 赋不同的值，如：true、'3'
+//			总结：
+//			JS中 = 用于赋值
+//			== 用于判断是否相等(比较运算符)，它会尽可能地倾向于相等的结果，即会自动类型转换（隐式转换）
+//			=== 用于严格地判断是否相等，不会转换类型
+
+//			更好的写法，层级比较少，代码可读性更强
+//			if (week === 1) {
+//				alert('星期一')
+//			} else if (week === 2) {
+//				alert('星期二')
+//			} else if (week === 3) {
+//				alert('星期三')
+//			} else if (week === 4) {
+//				alert('星期四')
+//			} else if (week === 5) {
+//				alert('星期五')
+//			} else if (week === 6) {
+//				alert('星期六')
+//			} else if (week === 7) {
+//				alert('星期日')
+//			} else{
+//				alert('不知道')
+//			}
+
+
+//			switch的判断相等相当于 ===
+//			不能缺少break，除非写了 return
+//			switch (week){
+//				case 1:
+//					alert('星期一')
+//					break
+//				case 2:
+//					alert('星期二')
+//					break
+//				case 3:
+//					alert('星期三')
+//					break	
+//				case 4:
+//					alert('星期四')
+//					break
+//				case 5:
+//					alert('星期五')
+//					break
+//				case 6:
+//					alert('星期六')
+//					break
+//				case 7:
+//					alert('星期日')
+//					break
+//				default:
+//					alert('不知道')
+//					break
+//			}
+			
+			
+//			var n = 0
+//			
+//			for循环
+//			i++相当于 i = i + 1
+//			++i也相当于 i = i + 1，但两者是有区别是，暂时不讲
+//			for的循环条件是3个语句，中间用;分隔，分号不可省略！
+//          比较运算符 >、<、>=、<=
+//			for (var i = 1; i <= 100; i++) {
+//				n = n + i
+//			}
+//          画一个图表示for循环的执行顺序
+//			
+//			alert(n)
+//			
+//			不写条件的for循环会无限循环，除非使用break或return
+//			for (;;) {
+//				if (true) break		//打断循环
+//				if (true) return	//直接返回
+//			}
+			
+//			实现从1加到100
+//			方法1：
+//			var a = 0
+//			for循环条件中的第3个语言可以是任意JS语句，不要以为只能写i++
+//			for (var i = 0; i <= 100; i = i + 2) {
+//				a = a + i
+//			}
+//			
+//			alert(a)
+
+//			方法2：
+//			a = 0
+//			for (var i = 0; i <= 100; i++) {
+//				// %取余运算符，两个数相除，取得余数
+//				if(i % 2 == 0) {
+//					a = a + i
+//				}
+//			}
+//			
+//			alert(a)
+//			
+//			方法3：
+//			a = 0
+//			for (var i = 0; i <= 100; i++) {
+//				//使用coninue可以跳过本次循环中剩余的代码
+//				//然后开始新一轮循环
+//				//break不再循环，取消循环，终止循环
+//				if(i % 2 > 0) continue
+//				a = a + i
+//			}
+//			
+//			alert(a)
+
+
+
+//			程序基本流程控制：
+//			分支：
+//			if...else...
+//			switch...case...default
+//			循环：
+//			for...
+
+		</script>
+	</body>
+</html>
