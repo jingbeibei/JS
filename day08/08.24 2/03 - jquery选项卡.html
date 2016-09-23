@@ -1,0 +1,106 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="author" content="name">
+        <title>jquery选项卡</title>
+        <script src="jquery-3.1.0.js"></script>
+        <style>
+            body,
+            ul,
+            li{
+                margin: 0;
+                padding: 0;
+            }
+            body{
+                font-size: 18px;
+            }
+            #outer{
+                width: 450px;
+                margin: 10px auto;
+            }
+            #tab{
+                overflow: hidden;
+                background-color: #000;
+                border: #000;
+            }
+            #tab li{
+                float: left;
+                color: #fff;
+                cursor: pointer;
+                line-height: 30px;
+                list-style: none;
+                padding: 0 20px;
+            }
+            #tab li.current{
+                color: #000;
+                background-color: #ccc;
+            }
+            #content{
+                border: 1px solid #000;
+            }
+            #content ul{
+                line-height: 25px;
+                margin: 0 30px;
+                padding: 10px 0;
+                list-style: none;
+                display: none;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="outer">
+            <ul id="tab">
+                <li class="current">科技</li>
+                <li>体育</li>
+                <li>娱乐</li>
+            </ul>
+            <div id="content">
+                <ul style="display:block;">
+                    <li>联想K900内部构造 看国产神器多少国产货(组图)</li>
+                    <li>联想K900内部构造 看国产神器多少国产货(组图)</li>
+                    <li>联想K900内部构造 看国产神器多少国产货(组图)</li>
+                    <li>联想K900内部构造 看国产神器多少国产货(组图)</li>
+                    <li>联想K900内部构造 看国产神器多少国产货(组图)</li>
+                    <li>联想K900内部构造 看国产神器多少国产货(组图)</li>
+                    <li>联想K900内部构造 看国产神器多少国产货(组图)</li>
+                    <li>联想K900内部构造 看国产神器多少国产货(组图)</li>
+                </ul>
+                <ul>
+                    <li>MIUI 8正式版今日公测！小米/红米全系可刷</li>
+                    <li>MIUI 8正式版今日公测！小米/红米全系可刷</li>
+                    <li>MIUI 8正式版今日公测！小米/红米全系可刷</li>
+                    <li>MIUI 8正式版今日公测！小米/红米全系可刷</li>
+                    <li>MIUI 8正式版今日公测！小米/红米全系可刷</li>
+                    <li>MIUI 8正式版今日公测！小米/红米全系可刷</li>
+                    <li>MIUI 8正式版今日公测！小米/红米全系可刷</li>
+                    <li>MIUI 8正式版今日公测！小米/红米全系可刷</li>
+                </ul>
+                <ul>
+                    <li>《魔兽》中国票房首周狂收12亿：续集要来了</li>
+                    <li>《魔兽》中国票房首周狂收12亿：续集要来了</li>
+                    <li>《魔兽》中国票房首周狂收12亿：续集要来了</li>
+                    <li>《魔兽》中国票房首周狂收12亿：续集要来了</li>
+                    <li>《魔兽》中国票房首周狂收12亿：续集要来了</li>
+                    <li>《魔兽》中国票房首周狂收12亿：续集要来了</li>
+                    <li>《魔兽》中国票房首周狂收12亿：续集要来了</li>
+                    <li>《魔兽》中国票房首周狂收12亿：续集要来了</li>
+                </ul>
+            </div>
+        </div>
+        <script>
+            // 
+            var timeid;
+            $('#tab').find('li').each(function(index){
+                // $(this).css('color', 'red');
+                var sLi = $(this);
+                sLi.mouseenter(function(){
+                    // console.log($(this).text());
+                    timeid = setTimeout(function(){
+                        sLi.addClass('current').siblings().removeClass('current');
+                        sLi.parent().next().find('ul:eq(' + index + ')').show().siblings().hide();
+                    }, 100);
+                })
+            })
+        </script>
+    </body>
+</html>

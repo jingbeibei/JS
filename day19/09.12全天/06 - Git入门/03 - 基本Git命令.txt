@@ -1,0 +1,25 @@
+git init			初始化git仓库
+git add 'filename'		将文件复制到git暂存区
+git commit -m 'message'	将暂存区文件提交到git仓库
+
+git status		查看状态
+git log			查看提交记录
+git log --oneline	简化成1行
+git log --graph		图形化显示（有分支时效果好）
+git log --all		显示所有分支的日志记录
+
+基本配置
+git config --global user.email "you@example.com" 
+git config --global user.name "Your Name"
+
+
+git diff 'filename'		比较文件差异（工作区与暂存区）
+git diff HEAD -- 'filename'	比较工作区与版本库
+
+git checkout -- 'filename'	从暂存区签出覆盖工作区
+
+git reset --hard commit-id	切换版本（重置工作区和暂存区）
+git reflog			查看操作记录
+
+git rm 'filename'		删除文件（提交后版本库中也会删除）
+			但还可以用reset恢复出来

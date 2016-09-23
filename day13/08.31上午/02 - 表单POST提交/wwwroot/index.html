@@ -1,0 +1,108 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="author" content="name">
+        <title>表单POST提交</title>
+        <style>
+            *{
+                box-sizing: border-box;
+            }
+            body{
+                margin: 0;
+            }
+            header{
+                background-color: #f93;
+                color: white;
+                height: 44px;
+                line-height: 44px;
+                text-align: center;
+                font-size: 18px;
+            }
+            form{
+                padding: 10px;
+            }
+            input, select{
+                display: block;
+                width: 100%;
+                margin: 5px auto;
+                height: 40px;
+                padding: 10px;
+                font-size: 16px;
+                border: 1px solid silver;
+            }
+            input[type=submit]{
+                border-color: #e82;
+                background-color: #e82;
+                color: white;
+                font-size: 16px;
+                line-height: 0.9rem;
+                /*margin: 15px;*/
+            }
+            .radio-group label{
+                display: inline-block;
+                width: 90px;
+                margin: 5px auto;
+                height: 40px;
+                padding: 12px;
+                background-image: url(images/unselect.png);
+                background-repeat: no-repeat;
+                background-size: 22px;
+                background-position: left center;
+                padding-left: 28px;
+                font-size: 16px;
+            }
+            input[type=radio]:checked + label{
+                background-image: url(images/select.png);
+            }
+            .radio-group input{
+                display: none;
+            }
+        </style>
+    </head>
+    <body>
+        <header>注册</header>
+        <form action="/user" method="POST">
+        <!--
+            pattern：规定了用户的输入格式，采用的是正则表达式
+            []:表示用户的输入范围
+            0-9：表示接受数字
+            a-z:表示接受小写字母
+            A-Z:表示接受大写字母
+            \u4e00-\u9fa5表示接受汉字
+            autocomplete:自动完成，off关闭
+        -->
+            <input type="text" name="nickname" autofocus autocomplete="off" required pattern="[\u4e00-\u9fa5a-zA-Z0-9]{2,16}" placeholder="请输入昵称">
+            <input type="password" name="pwd" placeholder="请输入密码">
+            <input type="password" placeholder="请再次输入密码">
+            <!--性别选项-->
+            <div class="radio-group">
+                <input type="radio" name="isMale" value="先生" id="male" checked>
+                <label for="male">先生</label>
+                <input type="radio" name="isMale" value="女士" id="female">
+                <label for="female">女士</label>
+            </div>
+            <!---->
+            <select name="course" id="">
+                <option value="HTML5">HTML5</option>
+                <option value="CSS3">CSS3</option>
+                <option value="JavaScript">JavaScript</option>
+            </select>
+            <!---->
+            <input type="email" name="email" placeholder="请输入电子邮箱">
+            <input type="number" name="number" max="100" step="1" placeholder="年龄">
+            <input type="range" name="range" max="10">
+            <input type="color" name="color">
+            <input type="time" name="date" placeholder="请输入出生年月">
+            <input type="text" name="city" placeholder="请输入意向城市" list="cities">
+            <!---->
+            <datalist id="cities">
+                <option label="北京" value="北京"></option>
+                <option label="太原" value="北京"></option>
+                <option label="杭州" value="北京"></option>
+                <option label="加州" value="北京"></option>
+            </datalist>
+            <!--提交按钮-->
+            <input type="submit" value="提交">
+        </form>
+    </body>
+</html>

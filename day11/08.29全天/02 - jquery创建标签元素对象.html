@@ -1,0 +1,69 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="author" content="name">
+        <title>jquery创建标签元素对象</title>
+        <script src="jquery.js"></script>
+        <style>
+            .red-text{
+                color: red;
+            }
+            .bold-text{
+                font-weight: bold;
+                font-size: 2rem;
+            }
+        </style>
+    </head>
+    <body>
+        <ul></ul>
+        <ul>
+            <li>第1项</li>
+            <li>第2项</li>
+            <li class="bold-text">第3项</li>
+            <li>第4项</li>
+            <li>CSS</li>
+            <li>第6项</li>
+            <li>第7项</li>
+        </ul>
+        <script>
+            // 
+            // $('ul').text('123456');
+            
+            // 改变列表项
+            // $('ul').html('<li>HTML<li>CSS<li>JS<li>NodeJS');
+            
+            // 用原生方法创建文本节点
+            var text = document.createTextNode('这个是通过代码创建的文本节点');
+            document.body.appendChild(text);
+            // 注释节点
+            var comment = document.createComment('通过代码创建注释节点');
+            document.body.appendChild(comment);
+            
+            // 
+            var ul = document.querySelector('ul');
+            // createDocumentFragment()创建一个文本片段
+            // 在创建很多个节点的情况时，会使用文档片段缓冲一下，可以减小对页面的冲击
+            // 在节点全部创建好之后再一次性的添加到页面上
+            // var fragment = document.createDocumentFragment();
+            // for(var i = 0; i < 10000; i++){console.log('***');
+            //     var li = document.createElement('li');
+            //     li.innerText = `新建的第${i}项`;
+            //     fragment.appendChild(li);
+            // }
+            // ul.appendChild(fragment);
+            
+            // 通过下面的形式得到的是jquery对象
+            // 传入的参数是字符串，得到的是jquery对象
+            console.dir($('<li>HTML<li>CSS<li>JS'));
+            
+            // 
+            $('<li>HTML</li><li>CSS</li><li>JS</li>').appendTo('ul');
+            
+            // 
+            $('<li></li>', {
+                'class':'bold-text red-text',
+                'onclick':'alert("被点击了")'
+            }).text("这是新修改的").appendTo('ul');
+        </script>
+    </body>
+</html>

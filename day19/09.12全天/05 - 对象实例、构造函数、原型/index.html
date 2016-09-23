@@ -1,0 +1,110 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="author" content="张强">
+        <title>对象实例、构造函数、原型</title>
+        <script src="js/baby.js"></script>
+        <script src="js/child.js"></script>
+        <script src="js/student.js"></script>
+        <script src="js/worker.js"></script>
+        <style>
+            
+        </style>
+    </head>
+    <body>
+        <script>
+            var baby = new Baby('ZhangSan', true, new Date(2013, 5, 1, 12, 0, 0));
+            console.log(baby);
+            console.log(baby.age);
+            console.log(baby.getAge());
+            baby.eat('苹果');
+            baby.sleep(12);
+
+            var child = new Child('Lee', true, new Date(2013, 5, 1, 12, 0, 0));
+            console.log(child);
+            child.eat('西瓜');
+            child.sleep(9);
+            child.play('滑滑梯', 1);
+            child.play('足球', 3);
+
+            var student = new Student('Wang', true, new Date(2013, 5, 1, 12, 0 , 0));
+            console.log(student);
+            student.eat('鸡翅');
+            student.sleep(7);
+            student.play('手机', 0.5);
+            student.study('HTML5', 15);
+
+            var worker = new Worker('Zhao', true, new Date(2013, 5, 1, 12, 0, 0));
+            console.log(worker);
+            worker.eat('鸡翅');
+            worker.sleep(9);
+            worker.play('手机', 0.5);
+            worker.study('管理学', 1);
+            worker.work('写代码', 3);
+            worker.work('开会', 2);
+            worker.work('技术交流', 3);
+            console.log('='.repeat(50));
+
+            // instanceof判断是否是一个构造函数的实例
+            // worker是Student、Child、Baby、Object构造函数的实例
+            console.log(worker instanceof Worker);
+            console.log('worker对象是Worker构造函数的一个实例');
+            console.log(student instanceof Student);
+            console.log(worker instanceof Student);
+            console.log(worker instanceof Child);
+            console.log(worker instanceof Baby);
+            // 
+            // var obj = new Object();
+            // var obj2 = {};
+            // Object是"根类"("基类")
+            console.log(worker instanceof Object);
+            console.log('='.repeat(50));
+
+            console.log(student instanceof Worker);
+            console.log(student instanceof Child);
+            console.log('='.repeat(50));
+
+            // typeof：类型判断
+            // typeof只能判断类型是object，不能判断具体是哪个构造函数构造出来的object
+            console.log(typeof worker);
+            console.log(typeof student);
+            console.log(typeof child);
+
+            // 用对象.constructor属性得到是构造函数
+            console.log(worker.constructor);
+
+            // 得到是构造函数的名称
+            console.log(worker.constructor.name);
+            console.log('-'.repeat(50));
+
+            // toString()得到的是构造函数的源代码
+            console.log(worker.constructor.toString());
+            // 得到Worker
+            var code = worker.constructor.toString();
+            var index = code.indexOf('(');
+            var name = code.substring(9, index);
+            console.log(name);
+
+            // 能否得到一个构造函数的原型呢???
+            console.log(Worker.prototype); // yes
+            // 能否得到一个对象的原型呢???
+            // 无法得到一个对象的原型
+            console.log(worker.prototype); // undefined
+
+            // 得到对象的原型
+            console.log(worker.constructor.prototype);
+            console.log('-'.repeat(50));
+
+            // Object.getPrototypeOf()得到一个对象的原型
+            var workerPrototype = Object.getPrototypeOf(worker);
+            // 找到原型的原型
+            var workerPrototypePrototype = Object.getPrototypeOf(workerPrototype);
+            var workerPrototypePrototypePrototype = Object.getPrototypeOf(workerPrototypePrototype);
+            var workerP4 = Object.getPrototypeOf(workerPrototypePrototypePrototype);
+            console.log(workerP4);
+
+            // 判断一个对象是否在指定的原型链当中
+            console.log(workerP4.isPrototypeOf(worker));
+        </script>
+    </body>
+</html>

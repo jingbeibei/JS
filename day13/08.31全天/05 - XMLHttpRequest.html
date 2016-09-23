@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="author" content="name">
+        <title>XMLHttpRequest</title>
+        <style>
+            
+        </style>
+    </head>
+    <body>
+        <!--
+            1. Ajax: Asynchronous JavaScript and XML,即异步JavaScript和XML。
+               它概括了Ajax应用程序的优点：由JavaScript编写、程序异步执行、用XML来封装和传输数据。
+               Ajax不是一门新技术，而是将各种已经存在的成熟技术，用一种新的开发模式揉合在一起，使
+               古老的B/S方式的Web开发焕发了新的活力，迎来了第二春。
+            2. Ajax主要由以下技术组成：
+               HTML CSS DOM JavaScript XML XMLHttpRequest
+            3. 关键技术: XMLHttpRequest 
+            4. 创建一个XHR对象：var xhr = new XMLHttpRequest();  
+            5. 用XHR初始化一个请求：
+               xhr.open('GET', '/conmment?nickname=hahahaha&password=123456&detail=吃得很多很多', true);
+               参数详解：
+               参数1表示请求方法
+               参数2表示请求的url
+               参数3表示请求方式为异步请求(true)或者同步请求(false),默认是true
+               同步请求：等待请求完成或者超时后才返回，请求过程中页面程序将会中断执行，处于"假死"状态，请求返回后再继续执行。
+               异步请求：请求后立即返回，页面程序不会中断。
+            6. 用XHR发送一个请求：
+               发送GET请求：
+               xhr.open('GET', '/conmment?nickname=hahahaha&password=123456&detail=吃得很多很多', true);
+               xhr.send();  // 发送GET请求，请求体在open()方法中已经设置好
+               发送POST请求：
+               xhr.open('POST', '/comment')
+               xhr.send('nickname=hahahaha&password=123456$detail=吃得很多很多') //发送POST请求，请求体写在send()方法中
+        -->
+    </body>
+</html>

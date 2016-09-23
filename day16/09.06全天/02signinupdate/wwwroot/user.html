@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>个人资料</title>
+</head>
+<body>
+    <!--
+        上传文件时，表单的enctype的值一定要设置为multipart/form-data
+    -->
+    <form action="/user/photo" method="POST" enctype="multipart/form-data">
+        <input type="file" name="photo" accept=".jpg,.png,.bmp">
+        <input type="submit" value="上传">
+    </form>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="author" content="name">
+        <title>闭包及用途</title>
+        <style>
+            
+        </style>
+    </head>
+    <body>
+        <script>
+            // 1 num是全局变量
+            var num = 10;
+            function func1(){
+                // 在函数内部可以得到全局变量的值
+                console.log(num);
+            }
+            func1();
+            
+            // 2
+            function func2(){
+                var num1 = 100;
+                // num2定义没有用var，它是全局变量。
+                num2 = 1000;
+            }
+            func2();
+            // num1是局部变量，在函数外部无法获取它的值
+            // console.log(num1);
+            console.log(num2);
+            
+            // 3 如何在外部得到内部的值???
+            // 在func3外部无法直接得到num3的值，但是可以用内部的方法func4()获得局部变量的值
+            // 这样在func3()外部就可以得到局部变量的值
+            // func3()内部的方法func4()称为闭包
+            function func3(){
+                var num3 = 10000;
+                function func4(){
+                    // 在func4内部返回num3的值
+                    return num3;
+                }
+                // 把func4作为结果返回
+                // 在js中函数也是对象，可以作为参数或者返回值
+                return func4;
+            }
+            var func = func3();
+            console.log(func());
+            
+            // 用闭包化简函数
+            function circleArea(pi, r){
+                // 返回圆的面积
+                return pi * r * r;
+            }
+            function calcCircleArea(r){
+                return circleArea(3.14, r);
+            }
+            console.log(calcCircleArea(5));
+            
+            // 化简函数
+            function getCalcCircleArea(pi){
+                return function(r){
+                    return pi * r * r;
+                }
+            }
+            var calcCircleArea1 = getCalcCircleArea(3.14);
+            console.log(calcCircleArea1(5));
+            var calcCircleArea2 = getCalcCircleArea(3.1415926);
+            console.log(calcCircleArea2(6));
+        </script>
+    </body>
+</html>

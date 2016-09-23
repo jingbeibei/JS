@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset = "utf-8">
+        <meta name = "author" content = "张强">
+        <title>javaScript函数</title>
+        <style>
+
+        </style>
+    </head>
+    <body>
+        <!--
+            函数：通常用于实现某种特定的功能，只定义一次，可能会被调用N次。
+        -->
+        <!--设计一个函数，不通过第3个变量交换两个变量的值-->
+        <script>
+            // swap()实现了两个数字的交换，并且没有使用中间变量
+            function swap(a, b){
+                a = a + b;  // a=8
+                b = a - b;  // b=3
+                a = a - b;  // a=5
+                alert(a + ', ' + b);
+            }
+            swap(3, 5);
+            
+            // 输出九九乘法表
+            function ninenine(){
+                for(var i = 1; i <= 9; i++){
+                    for(var j = 1; j <= i; j++){
+                        document.write(j + '×' + i + ' = ' + j*i + ' ');
+                    }
+                    document.write('<br>');
+                }
+            }
+            ninenine();
+        </script>
+    </body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset = "utf-8">
+        <meta name = "author" content = "张强">
+        <title>表单事件</title>
+        <style>
+            
+        </style>
+    </head>
+    <body>
+        <form action="">
+            <input type="text">
+            <input type="submit" value="提交">
+            <input type="reset" value="重置/清空数据">
+            <!--<button></button>-->
+        </form>
+        <script>
+            // 找到第1个input
+            var input = document.querySelector('input[type=text]');
+            
+            // ff捕捉不到focusin
+            // chrome可以捕捉到focusin
+            input.addEventListener('focusin',function(){
+                console.log('文本框获得了焦点...');
+            });
+            // ff捕捉不到focusout
+            // chrome可以捕捉到focusout            
+            input.addEventListener('focusout',function(){
+                console.log('文本框失去了焦点...');
+            });
+            
+            // focus获得焦点
+            input.addEventListener('focus',function(){
+                console.log('focus...');
+            });
+            // blur失去焦点
+            input.addEventListener('blur',function(){
+                console.log('blur...');
+            })
+            // 总结：focusin focusout对浏览器支持不好
+            // focus blur对浏览器支持较好
+            
+            input.addEventListener('change',function(){
+                console.log('内容发生了变化！！！');
+            });
+            
+            input.addEventListener('select',function(){
+                console.log('内容被选中了！！！');
+            });
+            
+            // 表单的提交
+            // document.forms页面上所有的表单
+            // document.forms
+            // 类似的还有document.images：找到所有的<img>
+            // document.images
+            
+            // 添加表单的提交事件监听
+            document.forms[0].addEventListener('submit',function(){
+                if(input.value.length > 0){
+                    alert('可以提交');
+                }else alert('请输入内容再提交');
+            })
+        </script>
+    </body>
+</html>

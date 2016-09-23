@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>artTemplate模板</title>
+    <style>
+        li span{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <!--引入模板文件-->
+    <script src="template.js"></script>
+
+    <script>
+        template.helper('format', function(time){
+            var y = time.getFullYear();
+            var M = time.getMonth() + 1;
+            var d = time.getDate();
+
+            M = M < 10 ? '0' + M : M;
+            d = d < 10 ? '0' + d : d;
+
+            return `${y}-${M}-${d}`;
+        });
+        // 使用template.helper()来格式化输出样式
+        // 格式化：把结果按某种格式输出
+        template.helper('money', function(price){
+            if(price == 0) return '免费';
+            return '￥' + price.toFixed(2);
+        });
+    </script>
+
+    <!--建立模板-->
+    <script id="template" type="text/html">
+        <!--
+            {{}}符号包裹起来的语句为模板的逻辑表达式
+        -->
+        {{if books.length < 1}}
+        <p>抱歉，没有找到推荐书目</p>
+        {{else}}
+        <h1>{{title}} {{books.length}}本</h1>
+        <ul>
+            <!--
+                使用each遍历数组
+                value表示数组元素
+                index表示数组索引
+            -->
+            {{each books as value index}}
+            <li>
+                {{value.name}}
+                <del>{{value.marketPrice | money}}</del>
+                <span>{{value.price | money}}</span><br>
+                出版日期：{{value.pDate | format}}
+            </li>
+            {{/each}}
+        </ul>
+        {{/if}}
+    </script>
+
+    <!--渲染数据-->
+    <script>
+        var data = {
+            title: '推荐书目',
+            books: [
+                {
+                    name: 'HTML5+CSS3权威教程',
+                    marketPrice: 125,
+                    price: 98.5,
+                    pDate: new Date(2015, 3, 9)
+                },
+                {
+                    name: 'JavaScript权威指南',
+                    marketPrice: 134,
+                    price: 88.9,
+                    pDate: new Date(2015, 8, 29)
+                },
+                {
+                    name: 'ES入门',
+                    marketPrice: 65,
+                    price: 0,
+                    pDate: new Date(2015, 12, 9)
+                }
+            ]
+        }
+        // 找到id是template的模板，并传入数据data
+        var result = template('template', data);
+        document.body.innerHTML = result;
+        console.log(result);
+    </script>
+</body>
+</html>

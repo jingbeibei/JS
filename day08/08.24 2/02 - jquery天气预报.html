@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>太原市 - 天气预报</title>
+    <script src="jquery-3.1.0.js"></script>
+    <style>
+        html,body{
+            width:100%;
+            height: 100%;
+            margin: 0;
+            text-shadow: 1px 0px 1px #333;
+            background-image: linear-gradient(to bottom, rgb(13, 104, 188), rgb(114, 173, 224));
+            background-repeat: no-repeat;
+            text-align: center;
+            color: white;
+        }
+        header{
+            font-size: 19px;
+            line-height: 60px;
+        }
+        main .icon{
+            margin: 40px;
+            background-image: url(img/days/xue.png);
+            height: 128px;
+            background-repeat: no-repeat;
+            background-position: center center;
+        }
+        main .tempers{
+            font-size: 32px;
+            /*font-family: */
+        }
+        main sup{
+            font-size: 19px;
+        }
+        main .weather{
+            font-size: 17px;
+        }
+        main .wind{
+            font-size: 13px;
+            line-height: 200%;
+        }
+        main .current{
+            font-size: 13px;
+        }
+        footer{
+            width: 90%;
+            margin: 60px auto 20px auto;
+            font-size: 13px;
+        }
+        section{
+            width: 33.333333333333333333%;
+            float: left;
+            border-right: 1px solid #aaf;
+            box-sizing: border-box;
+        }
+        section:nth-child(3){
+            border-right: none;
+        }
+        section .icon{
+            height: 60px;
+            margin: 15px auto;
+            background-image: url(img/days/duoyun.png);
+            background-repeat: no-repeat;
+            background-size: 60px;
+            background-position: center center;
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+    <header>北京</header>
+    <main>
+        <div class="icon"></div>
+        <div class="tempers"><span>-13 ~ 2</span><sup>℃</sup></div>
+        <div class="weather">阵雨</div>
+        <div class="wind">微风</div>
+        <div class="current">实时温度: 26℃，空气指数 135，轻度污染</div>
+    </main>
+    <footer>
+        <section>
+            <div class="week">周四</div>
+            <div class="icon"></div>
+            <div class="temper">12 ~ 28℃</div>
+            <div class="weather">晴天</div>
+            <div class="wind">微风</div>
+        </section>
+        <section>
+            <div class="week">周四</div>
+            <div class="icon"></div>
+            <div class="temper">12 ~ 28℃</div>
+            <div class="weather">晴天</div>
+            <div class="wind">微风</div>
+        </section>
+        <section>
+            <div class="week">周四</div>
+            <div class="icon"></div>
+            <div class="temper">12 ~ 28℃</div>
+            <div class="weather">晴天</div>
+            <div class="wind">微风</div>
+        </section>
+    </footer>
+    <script>
+        $.getJSON('http://api.map.baidu.com/telematics/v3/weather?location=太原&output=json&ak=iw5m2G7ayDow8ofDdDGVUMB3&mcode=com.BaiduWeather&callback=?', function(data){
+            console.log(data.results[0]);
+            // $('header').text(data.results[0].currentCity);
+            var r = data.results[0];
+            var city = r.currentCity;
+            var pm25 = r.pm25;
+            
+            var datas = r.weather_data;
+            // today 今天天气
+            var today = datas[0];
+            var pic = today.dayPictureUrl.substring(today.dayPictureUrl.lastIndexOf('/'));
+            console.log(pic); // pic = /xiaoyu.png
+            
+            $('header').text(city);
+            $('main .icon').css('background-image','url(img/days' + pic + ')');
+            var tempers = today.temperature.replace('℃', '');
+            $('main .tempers span').text(tempers);
+            $('main .weather').text(today.weather);
+            $('main .wind').text(today.wind);
+            $('main .current').text(today.date);
+            
+            // 后三天天气状况
+            var days = $('section');
+            for(var i = 1; i < 4; i++){
+                // day = get(0) get(1) get(2)
+                var day = days.get(i - 1);
+                // data表示后三天的天气状况
+                var data = datas[i];
+                
+                $('.week', day).text(data.date);
+                $('.temper', day).text(data.temperature);
+                $('.wind', day).text(data.wind);
+                $('.weather', day).text(data.weather);
+                // 修改后3天的图片
+                var pic = data.dayPictureUrl.substring(data.dayPictureUrl.lastIndexOf('/'));
+                console.log(pic);
+                $('.icon', day).css('background-image','url(img/days'+ pic + ')');
+            }
+        })
+    </script>
+</body>
+</html>

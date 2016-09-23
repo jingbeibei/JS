@@ -1,0 +1,42 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="author" content="张强">
+        <title>原型链继承</title>
+        <script src="js/baby.js"></script>
+        <script src="js/child.js"></script>
+        <script src="js/student.js"></script>
+        <script src="js/worker.js"></script>
+        <style>
+            
+        </style>
+    </head>
+    <body>
+        <script>
+            var baby = new Baby('ZhangSan', true, new Date(2013, 5, 1, 12, 0, 0));
+            console.log(baby);
+            console.log(baby.age);
+            console.log(baby.getAge());
+            baby.eat('苹果');
+            baby.sleep(12);
+
+            var child = new Child('Lee', true, new Date(2013, 5, 1, 12, 0, 0));
+            console.log(child);
+            child.eat('月饼');
+            child.sleep(9);
+
+            var student = new Student('Wang', true, new Date(2013, 5, 1, 12, 0 ,0));
+            console.log(student);
+            student.eat('鸡翅');
+            student.sleep(20);
+            student.play('手机', 1.5);
+
+            var worker = new Worker('Zhao', true, new Date(2013, 5, 1, 12, 0, 0));
+            console.log(worker);
+            worker.eat('石榴');
+            worker.sleep(30);
+            worker.play('木马', 1);
+            worker.study('{高等数学}', 12);
+        </script>
+    </body>
+</html>

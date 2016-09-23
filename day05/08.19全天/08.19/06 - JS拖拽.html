@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset = "utf-8">
+        <meta name = "author" content = "张强">
+        <title>JS拖拽</title>
+        <style>
+            li{
+                cursor: move;
+            }
+        </style>
+    </head>
+    <body>
+        <!--
+            draggable: H5新增的属性
+            它规定了元素是否可以被拖动，经常用于拖放操作。
+            目前只有firefox chrome safari支持该属性。
+            取值有三种：
+            true 可以拖动
+            false 不可拖动
+            auto 使用浏览器的默认特性
+        -->
+        <ol>
+            <li draggable="true">HTML5</li>
+            <li draggable="true">CSS3</li>
+            <li draggable="true">JavaScript</li>
+            <li draggable="true">PHP</li>
+            <li draggable="true">Node.JS</li>
+        </ol>
+        <script>
+            var lis = document.getElementsByTagName('li');
+            for(var i = 0; i < lis.length; i++){
+                var li = lis[i];
+                // 1 拖动开始时
+                // 给li添加开始拖动事件
+                // 当拖拽元素开始被拖拽时触发该事件，此事件作用在被拖拽元素上
+                li.ondragstart = function(event){
+                    console.log('拖拽开始');
+                    event.target.id = 'dragging';
+                    // 在拖拽过程中，可以用dataTransfer对象传递数据
+                    // setData()将指定的数据格式赋值给dataTransfer
+                    event.dataTransfer.setData('li', event.target.id);
+                };
+                // 2 当拖拽元素进入目标后
+                li.ondragenter = function(event){
+                    console.log('进入目标元素');
+                    // event.currentTarget指的是目标元素
+                    event.currentTarget.style.color = 'blue';
+                    event.currentTarget.style.borderTop = '1px solid blue';
+                }
+                // 3 当拖拽元素离开目标范围
+                li.ondragleave = function(event){
+                    console.log('离开目标范围');
+                    event.currentTarget.style.color = '';
+                    event.currentTarget.style.borderTop = '';
+                }
+                // 拖拽元素在目标元素上移动时触发的事件
+                // 此事件作用在目标元素上
+                li.ondragover = function(event){
+                    // ondragover中一定要加上event.preventDefault()
+                    // 否则不会执行ondrop事件
+                    event.preventDefault();
+                }
+                // 拖动结束
+                li.ondragend = function(event){
+                    console.log('拖动结束');
+                    var id = event.dataTransfer.getData('li');
+                    var li = document.getElementById(id);
+                    li.id = '';
+                }
+                // 释放鼠标时
+                // 被拖拽的元素在目标元素上并释放鼠标时触发的事件
+                // 此事件作用的对象是目标元素
+                li.ondrop = function(event){
+                    console.log('释放鼠标了');
+                    var id = event.dataTransfer.getData('li');
+                    console.log(id);
+                    var li = document.getElementById(id);
+                    
+                    event.currentTarget.style.color = '';
+                    event.currentTarget.style.borderTop = '';
+                    
+                    // if(li == event.currentTarget) return;
+                    
+                    // 找到被拖拽元素(li)的父元素
+                    var ol = li.parentElement;
+                    // 删除被拖拽的li
+                    ol.removeChild(li);
+                    // 在新位置插入li
+                    // insertBefore(1, 2)
+                    // 参数1表示等插入的节点
+                    // 参数2表示在此节点前面插入
+                    ol.insertBefore(li, event.currentTarget);
+                }
+            }
+        </script>
+    </body>
+</html>

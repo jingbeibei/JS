@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset = "utf-8">
+        <meta name = "author" content = "张强">
+        <title>数组的常见方法</title>
+        <style>
+            
+        </style>
+    </head>
+    <body>
+        <script>
+            var arr1 = ['a', 'b', 5, 'd', 'e', 'f', '  ', 'h'];
+            // for(in)遍历数组
+            for(var k in arr1){
+                console.log(arr1[k]);
+            }
+            console.log('+'.repeat(30));
+            // %d %s称为点位符
+            // %d指的是整数 %s指的是字符(串)
+            for(var i = 0; i < arr1.length; i++){
+                console.log('第%d个位置的值是：%s',i,arr1[i]);
+            }
+            // 
+            console.log('='.repeat(30));
+            arr1.forEach(function(item, index, arr){
+                console.log('第%d个位置的值是：%s',index,item);
+            });
+            console.log('-'.repeat(30));
+            
+            /////////////////////////////////////////////////
+            function isEmptyString(item, index, array){
+                item = item.trim();
+                return item.length == 0; 
+            }
+            var arr2 = ['', ' ', '  ', 'a'];
+            var arr3 = [' ', ' ', '', ' '];
+            // every()会对arr2里面的每个元素调用isEmptyString()
+            // isEmptyString如果返回都是true，every()的结果才是true
+            console.log(arr2.every(isEmptyString));
+            console.log(arr3.every(isEmptyString));
+            // some(isEmptyString)，如果isEmptyString有一个为true
+            // 整体结果就是true
+            console.log(arr2.some(isEmptyString));
+            
+            // map/reduce的用法
+            var nums = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+            // function(item) 其中item指的是nums数组的元素
+            var result = nums.map(function(item){
+                return Math.pow(item, 3);
+                // 经过map()函数运算后产生一个新数组
+                // [1, 8, 27, 64, 125, 216, 343, 512, 729]
+            }).reduce(function(preValue, currentValue, index, arr){
+                // preValue指的是数组的第1个元素
+                // currentValue指的是数组的第2个元素
+                // index指的是数组的索引
+                // arr指的是数组本身
+                console.log(preValue);
+                console.log(currentValue);
+                return preValue + currentValue;
+            });
+            console.log(result);
+        </script>
+    </body>
+</html>

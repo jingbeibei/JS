@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>自定义属性data-*</title>
+</head>
+<body>
+    <!--
+        格式：必须以data-开头
+        data-*
+    -->
+    <audio src="yesterday.mp3">
+        
+    </audio>
+    <audio src="hao123.wav" data-artist='leona' data-duration='3min50secs'>
+        
+    </audio>
+    <script>
+        var audio = document.getElementsByTagName('audio')[1];
+        console.log(audio);
+        console.log(audio.getAttribute('src'));
+        console.log(audio.getAttribute('data-duration'));
+        // 得到自定义属性的值
+        console.log(audio.dataset.duration);
+        // console.log(audio.dataset-duration); //错误的写法
+        
+        // 用js添加自定义属性,等于添加了data-demo属性，它的取值是zhongbei
+        audio.dataset.demo = 'zhongbei';
+    </script>
+</body>
+</html>

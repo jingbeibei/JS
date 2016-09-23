@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset = "utf-8">
+        <meta name = "author" content = "张强">
+        <title>通过循环添加监听</title>
+        <style>
+            div{
+                width: 50px;
+                height: 200px;
+                float: left;
+                border: 10px solid blue;
+            }
+        </style>
+    </head>
+    <body>
+        <div data-note="1">1</div>
+        <div data-note="2">2</div>
+        <div data-note="3">3</div>
+        <div data-note="4">4</div>
+        <div data-note="5">5</div>
+        <div data-note="6">6</div>
+        <div data-note="7">7</div>
+        <div data-note="8">8</div>
+        <div data-note="9">9</div>
+        <div data-note="10">10</div>
+        <script>
+            var divs = document.getElementsByTagName('div');
+            // for(var i = 0; i < divs.length; i++){
+            //     var div = divs[i];
+            //     var num = div.dataset.note;
+            //     div.addEventListener('click',function(){
+            //         // for循环的时候，下面这一句没有执行。
+            //         // 当for结束时，才触发click，这时num已经是10了
+            //         alert(num);
+            //     });
+            // }
+            
+            // 换一种写法
+            for(var i = 0; i < divs.length; i++){
+                divs[i].addEventListener('click',function(event){
+                    // event.target表示触发事件的标签元素
+                    var div = event.target;
+                    alert(div.dataset.note);
+                });
+            }
+            
+            var func = function(){
+                alert('新的事件监听者...');
+            }
+            // 同一个对象可以添加多个监听
+            divs[3].addEventListener('click', func);
+            // 移除一个事件监听
+            divs[3].removeEventListener('click',func);
+        </script>
+    </body>
+</html>

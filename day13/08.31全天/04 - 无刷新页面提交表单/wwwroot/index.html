@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="author" content="name">
+        <title>iframe实现无刷新提交表单</title>
+        <style>
+            *{
+                box-sizing: border-box;
+            }
+            form{
+                padding: 10px;
+            }
+            input{
+                display: block;
+                width: 100%;
+                height: 30px;
+                margin: 15px auto;
+            }
+            iframe{
+                display: none;
+            }
+        </style>
+    </head>
+    <body>
+        <!--
+            问题:
+            form表单在提交时会跳转页面，这样很不友好，有时候项目不需要这样。
+            解决方法：
+            可以在页面上添加一个iframe，让表单刷新iframe，而不是刷新整个页面；
+            这样就达到了无刷新效果。
+            原理：
+            form表单的数据提交到iframe里面处理，这个iframe是隐藏的，所以提交表单
+            时当前页面没有发生任何变化。
+        -->
+        <!--target属性对应iframe的name属性，它们的值要一致-->
+        <form action="/user/login" method="POST" target="result00">
+            <input type="tel" name="phone" placeholder="请输入您的电话号码" required autocomplete="off"> 
+            <input type="password" name="password" placeholder="请输入您的密码" required> 
+            <input type="submit" value="登录">        
+        </form>
+        <iframe src="" frameborder="1" id="result0000" name="result00"></iframe>
+    </body>
+</html>

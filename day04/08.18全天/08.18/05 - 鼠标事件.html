@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset = "utf-8">
+        <meta name = "author" content = "张强">
+        <title>鼠标事件</title>
+        <style>
+            section{
+                width: 150px;
+                height: 150px;
+                background-color: blue;
+                margin: 100px auto;
+                border-radius: 50%;
+            }
+            span{
+                width: 30px;
+                height: 30px;
+                background-color: red;
+                border-radius: 50%;
+                display: block;
+                position: absolute;
+            }
+            div{
+                width: 50px;
+                height: 50px;
+                background-color: green;
+            }
+        </style>
+    </head>
+    <body>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <section>
+            <div></div>
+        </section>
+        <script>
+            var sec = document.querySelector('section');
+            // sec.addEventListener('click',function(){
+            //     console.log('单击了鼠标');
+            // });
+            
+            // 双击会被认为是两次单击事件
+            // sec.addEventListener('dblclick',function(){
+            //     console.log('双击了鼠标');
+            // });
+            
+            // sec.onmousedown = function(){
+            //     console.log('按下了鼠标任意键');
+            // };
+            // 任意键被松开触发onmouseup
+            sec.onmouseup = function(){
+                sec.style.backgroundColor = 'black';
+            }
+            // 当鼠标进入目标(section)时
+            sec.onmouseenter = function(){
+                document.body.style.backgroundColor = 'green';
+            };
+            // 当鼠标离开目标时
+            sec.onmouseleave = function(){
+                document.body.style.backgroundColor = 'white';
+            };
+            
+            // 
+            var spans = document.getElementsByTagName('span');
+            window.onmousemove = function(event){
+                // event.pageX：鼠标指针的横坐标
+                // event.pageY: 鼠标指针的纵坐标
+                console.log(event.pageX + ', ' + event.pageY);
+                for(var i = 0; i < spans.length; i++){
+                    var span = spans[i];
+                    var r1 = Math.random() * 300;
+                    var r2 = Math.random() * 300;
+                    var r3 = Math.random();
+                    
+                    span.style.top = event.pageY +　r1 + 'px';
+                    span.style.left = event.pageX + r2 + 'px';
+                    span.style.backgroundColor = 'hsl(' + r3*60 + ', 100%, 50%)';
+                }
+            }
+        </script>
+    </body>
+</html>

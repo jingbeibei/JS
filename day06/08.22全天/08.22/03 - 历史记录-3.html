@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset = "utf-8">
+        <meta name = "author" content = "张强">
+        <title>历史记录-3</title>
+        <style>
+            
+        </style>
+    </head>
+    <body>
+        <h1>页面3</h1>
+        <button onclick="goPage1()">后退到底</button>
+        <button onclick="progress(25)">进度25%</button>
+        <button onclick="progress(50)">进度50%</button>
+        <button onclick="progress(75)">进度75%</button>
+        <button onclick="progress(100)">进度100%</button>
+        <a href="03 - 历史记录-1.html">跳转到页面1</a>
+        <div>
+            <progress max="100" value="0"></progress>
+        </div>
+        <script>
+            function goPage1(){
+                // go(-2)表示后退两步
+                history.go(-2);
+            }
+            function progress(value){
+                document.querySelector('progress').value = value;
+                // pushState()可以向浏览器的历史记录注入新的记录
+                history.pushState(value, '进度是: ' + value, '#' + value);
+                document.title = '进度==' + value;
+                // onpopstate事件在注入浏览器的历史记录发生变化时触发
+                window.onpopstate = function(event){
+                    var value = event.state;
+                    alert(value);
+                    document.querySelector('progress').value = value;
+                }
+            }
+        </script>
+    </body>
+</html>

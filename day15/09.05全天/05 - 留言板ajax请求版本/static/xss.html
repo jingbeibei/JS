@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="author" content="张强">
+        <title>跨站脚本攻击</title>
+        <style>
+            
+        </style>
+    </head>
+    <body>
+        <script>
+            // XSS  Cross Site Script  跨站脚本
+            // CSS已经用来表示样式表所以改为XSS
+            // 跨站脚本攻击的后果：
+            // 1.导致页面上出现不该出的内容
+            // 2.导致浏览被脚本卡死
+            // 3.导致用户重要信息被盗
+            // 4.导致用户电脑中病毒
+            
+            // 导致XSS攻击的原因：
+            // 没有过滤用户输入的内容
+            
+            // 解决XSS攻击的方法：
+            // 将危险字符全部替换掉
+            // 不相信用户输入每一个字符
+            
+            setInterval(function(){
+                while(true){
+                    alert('你被攻击了hehehehehe')
+                }
+            }, 1000)
+            
+            
+            
+            // 以下内容是关于 while 循环的讲解
+            // while(条件){
+            //     循环内容
+            // }
+            // 只要条件为真就一直循环
+            
+            // var i = 0
+            // while(i < 100){
+            //     console.log(i)
+            //     i++
+            // }
+            
+            // var flag = true, i = 0
+            // while(flag){
+            //     console.log(i++)
+            //     if(i == 100) flag = false
+            // }
+            
+            // var i = 0
+            // do{
+            //     console.log(i++)
+            // }
+            // while(i < 100)
+            
+            // do{
+            //     console.log('至少执行1次')
+            // }
+            // while(false)
+            
+            // while(false){
+            //     console.log('最少执行0次')
+            // }
+            
+            // while有可能1次都不执行
+            // do...while...至少会执行1次
+            
+            // 相同点：执行直到条件为false
+            
+        </script>
+    </body>
+</html>

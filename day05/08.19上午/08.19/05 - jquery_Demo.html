@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset = "utf-8">
+        <meta name = "author" content = "张强">
+        <title></title>
+        <script src="jquery-3.1.0.js"></script>
+        <style>
+            
+        </style>
+    </head>
+    <body>
+        <p>
+            中北大学
+        </p>
+        
+        <button onclick="test()">
+            确定
+        </button>
+        <script>
+            // 1 js写法
+            // alert(document.getElementsByTagName('p')[0].innerText);
+            
+            // 2 jquery写法
+            // $('p'):得到页面上的p元素
+            // text()得到文本内容
+            // $('p').text()
+            
+            function test(){
+                // $('p')找到p
+                // text('irowurloiuroaieurlo')修改p的文本内容
+                $('p').text('irowurloiuroaieurlo');
+            }
+        </script>
+    </body>
+</html>

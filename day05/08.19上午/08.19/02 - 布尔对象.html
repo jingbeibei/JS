@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset = "utf-8">
+        <meta name = "author" content = "张强">
+        <title>布尔对象</title>
+        <style>
+            
+        </style>
+    </head>
+    <body>
+        <script>
+            var a = 1;
+            var b = 3;
+            // !一元运算符，作用是取反
+            // a + b是4，即结果是非0数字，会被认为是true
+            console.log(!(a + b)); // false
+            // 第1个!是作用是取反
+            // 第2个!的作用是类型转换
+            console.log(!!(a + b)); // true 
+            // 对布尔值取反
+            console.log(!true);
+            console.log(!false);
+            
+            console.log('='.repeat(30));
+            // 布尔对象的概念
+            // b是布尔对象，它不是一个值。
+            // 'false'是一个字符串
+            // b是一个包含了true值的对象
+            // 可以把b当成一个盒子
+            // 把一个值放入对象的过程叫装箱boxing
+            // 把一个值从对象中取出叫拆箱unboxing
+            var b = new Boolean('false');
+            console.log(b);
+            // 
+            console.log(new Boolean(false));
+            console.log(new Boolean(true));
+            
+            // 
+            var me = new Object();
+            var me2 = {};
+            // me.name = 'zhangsan';
+            // me.showname = function(){}
+            console.log(me);
+            console.log(me2);
+            // 空对象取反被认为是false
+            console.log(!me);
+            // 两次取反是true
+            console.log(!!me2);            
+            console.log('-'.repeat(30));
+            
+            me.name = 'zhangSan';
+            me.age = 5;
+            me2.name = 'liSi';
+            me2.age = 12;
+            console.log(me);
+            console.log(me2);
+            // 空对象取反被认为是false
+            console.log(!me);
+            // 两次取反是true
+            console.log(!!me2);            
+            console.log('-'.repeat(30));
+            
+            // 0 -0 '' null undefined NaN都会被认为是false
+            console.log(new Boolean(true)); // true
+            console.log(new Boolean(false)); // false
+            console.log(new Boolean(0)); // false
+            console.log(new Boolean(2)); // true
+            console.log(new Boolean('html5')); // true
+            console.log(new Boolean(null));  //  false          
+            console.log(new Boolean(''));  // false
+            
+            // 无论布尔对象这个盒子里装的是true还是false
+            // 布尔对象都会被认为是true，因为布尔对象是一个对象
+            // 在if()判断条件时不要用布尔对象
+            if(new Boolean(0)){
+                console.log('能打印出来吗???');
+            }
+            
+            // 对布尔值转换
+            // 试图对布尔值(包括数字、字符串等)调用方法时，
+            // 会导致临时产生一个对象，方法调用完毕对象即消失
+            var str = true.toString();
+            console.log(str);
+            console.log(typeof str);
+            // console.dir()以对象的方式输出一个值
+            console.dir(str);
+            
+            // 直接调用Boolean()函数返回的是布尔值
+            // new Boolean()返回的是布尔对象
+            var value1 = Boolean('false');
+            var value2 = Boolean(null);
+            var value3 = Boolean(true);
+            var value4 = Boolean(0);
+            var value5 = Boolean(5);
+            var value6 = Boolean(undefined); 
+            console.log(value1);
+            console.log(value2);
+            console.log(value3);
+            console.log(value4);
+            console.log(value5);
+            console.log(value6);                        
+        </script>
+    </body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数字对象</title>
+</head>
+<body>
+    <script>
+        var n1 = 3; // 数字
+        // 用new关键字+构造函数Number()创建一个数字对象
+        var n2 = new Number(3); // 数字对象
+        console.log(typeof n1);
+        console.log(typeof n2);
+        // 构造函数有转换能力，可以把数字字符串转换为数字
+        var n3 = new Number('2016');
+        console.log(n3);
+        // 构造函数的转换能力有限，下面的情况无法转换
+        var n4 = new Number('2016年');
+        console.log(n4);
+        // 布尔值可以转换
+        var n5 = new Number(true);
+        console.log(n5);
+        var n6 = new Number(false);
+        console.log(n6);
+        // NaN:Not a Number
+        console.log(new Number('a'));
+        
+        // js最大值和最小值
+        console.log(Number.MAX_VALUE); // 最大值1.7976931348623157e+308
+        console.log(-Number.MIN_VALUE);// 最小值-5e-324
+        console.log(Number.MIN_VALUE);// 最小绝对值5e-324
+        
+        // 
+        console.log(0.000000000001 / 0); // Infinity
+        console.log(0 / 12); // 0
+        console.log(0 / 0); // NaN
+        
+        // isInteger判断是否是整数
+        console.log(Number.isInteger(3)); // true
+        console.log(Number.isInteger(3.0)); // true
+        console.log(Number.isInteger(3.01)); // false
+        
+        // js计算误差造成的，输出结果是false
+        console.log(Number.isInteger(100 * (0.1 + 0.2)));
+        
+        // 
+        console.log(Math.PI);
+        console.log(Math.PI.toExponential(6));
+        // toExponential()返回是字符串，整数部分是1位，结果会四舍五入
+        console.log(123456.987654.toExponential(3));
+        
+        // toFixed()保留指定位数的小数，不影响整数部分
+        // 结果是字符串，会四舍五入
+        var num = 123456789.987654321;
+        console.log(num.toFixed(3));
+    </script>
+</body>
+</html>

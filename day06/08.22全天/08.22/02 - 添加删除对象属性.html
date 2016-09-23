@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset = "utf-8">
+        <meta name = "author" content = "张强">
+        <title>添加删除对象属性</title>
+        <style>
+            
+        </style>
+    </head>
+    <body>
+        <script>
+            // 对象创建的两种方法
+            var obj1 = new Object();
+            var obj2 = {};
+            
+            // 关于对象的一些操作
+            var p = {};
+            p.name = 'zhangSan';
+            p.age = 3;
+            console.dir(p);
+            // 更改属性的值
+            p.age = undefined;
+            console.dir(p); 
+            //
+            p.age = null;
+            console.dir(p);
+            // delete可以删除一个属性
+           // delete p.age;
+            console.log(p);
+            // 向p添加一个函数
+            // 添加到对象里的函数一般称为方法
+            p.show = function(){
+                
+            }  
+            console.dir(p);   
+            //删除对象里的方法
+            // delete既可以删除属性也可以删除方法
+            delete p.show;
+            console.dir(p); 
+            
+            console.log('+'.repeat(30));
+            
+            
+            var num1 = new Number(3.14159);
+            console.log(num1);
+            var num2 = new Object(3.14159);
+            console.log(num2);
+            var b = new Boolean(true);
+            console.log(b);
+            // 以上三种结果都是对象类型的
+            console.log(Number('3.14159')); // 结果是数字
+            
+            // 给对象添加属性
+            var p1 = new Object();
+            p1.name = 'zhangSan';
+            p1.age = 3;
+            // 1 添加一个新属性，用对象名.属性名
+            p1.isMale = true;
+            console.log(p1);
+            // 2
+            // 参数1表示要添加属性的那个对象
+            // 参数2表示新添加属性名字
+            // 参数3表示新属性的一些描述
+            Object.defineProperty(p1, 'height', {
+                value: 183,
+                // configurable表示该属性能否被删除，默认是false
+                configurable:true,
+                // writable表示该属性的值是否被改变
+                writable:false,
+                // enumerable表示该属性能否被for...in语句列举出来
+                enumerable:false
+            });
+            console.log(p1);
+            // for...in遍历p1对象
+            for(var k in p1){
+                console.log(k);
+            }
+            console.log('='.repeat(30));
+            // getOwnPropertyDescriptor()可以获得指定属性的描述信息
+            var heightDesc = Object.getOwnPropertyDescriptor(p1,'height');
+            console.log(heightDesc);
+            var nameDesc = Object.getOwnPropertyDescriptor(p1,'name');
+            console.log(nameDesc);
+            
+            //
+            var p2 = {
+                name:'li',
+                age:13,
+                desc:'我的名字叫Li，今年13岁'
+            }
+            var p3 = {
+                name:'wang',
+                age:23,
+                desc:'我的名字叫wang，今年23岁'
+            }
+            var p4 = {
+                name:'qian',
+                age:33,
+                desc:'我的名字叫qian，今年33岁'
+            }
+            // 此处省去一万字
+            // 快速创建对象，代码要尽可能的少，去掉重复代码
+            // 使用"构造函数"来实现
+            // 定义一个构造函数Person，构造函数名字的首字母要大写
+            function Person(nameValue, ageValue, isMaleValue, heightValue){
+                // 在构造函数内部使用this表示它所属的对象
+                this.name = nameValue;
+                this.age = ageValue;
+                this.isMale = isMaleValue;
+                this.height = heightValue;
+                this.desc = '我的名字叫' + nameValue + '，今年' + ageValue + '岁。';
+                
+                // 在构造函数内部新增一个属性
+                Object.defineProperty(this, 'birthday', {
+                    configurable:true,
+                    enumerable:true,
+                    // get是计算属性，它对应的值是函数
+                    get:function(){
+                        var year = new Date().getFullYear();
+                        // 返回出生年份
+                        return year - this.age;
+                    },
+                    set:function(value){
+                        var year = new Date().getFullYear();
+                        if(value > 2016){
+                            alert('出生年份不能大于'+ year);
+                            return;
+                        }
+                        this.age = year - value;
+                    }
+                });
+            }
+            // 用构造函数创建一个对象p5
+            var p5 = new Person('sun', 20, false, 165);
+            // 输出新增属性值的时候实际是调用get属性对应的函数
+            console.log(p5.birthday);
+            // p5.birthday = 1991调用set函数
+            p5.birthday = 1991;
+            console.log(p5.age);
+            
+            // 
+            var p6 = new Person('zhao', 22, true, 179);
+            p6.birthday = 2022;
+        </script>
+    </body>
+</html>

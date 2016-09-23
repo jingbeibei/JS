@@ -1,0 +1,14 @@
+DOS命令
+1、创建目录 mkdir
+2、回到上一层目录 cd..
+3、切换目录 cd wwwroot(进入wwwroot)
+4、查看目录文件 dir
+
+有关NodeJS
+1、安装express框架 npm install express --save
+2、启动服务器 node server.js
+3、终止服务器 ctrl+c 组合键
+
+关于express框架
+官网 http://www.expressjs.com.cn/
+阅读官网的api手册

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>模板包含</title>
+</head>
+<body>
+    <!--建立模板-->
+    <script id="book" type="text/html">
+        <div>
+            <img src="{{img}}" alt="书籍封面">
+            <h2>{{name}}</h2>
+        </div>
+    </script>
+    <!--建立模板-->
+    <script id="web" type="text/html">
+        <div>
+            <a href="{{url}}">{{name}}</a>
+        </div>
+    </script>
+    <!--建立模板-->
+    <script id="test" type="text/html">
+        <h1>{{title}}</h1>
+        <!--
+            each...as...遍历表达式,用来遍历数组或对象
+            items:数组名
+            value:数组元素
+            index:数组元素的索引
+        -->
+        {{each items as value000 index}}
+            <!--判断value.type的值-->
+            {{if value000.type == 'web'}}
+                <!--include用于引入子模板，子模板的名称是web-->
+                {{include 'web' value000}}
+            {{else}}
+                <!--引入另一个子模板-->
+                {{include 'book' value000}}
+            {{/if}}
+        {{/each}}    
+    </script>
+    <!--引入模板文件-->
+    <script src="template.js"></script>
+    <!--模板数据-->
+    <script>
+        var suggestions = {
+            title: "建议浏览的网站和阅读的书目",
+            items: [
+                {
+                    type: 'web',
+                    name: 'MDN',
+                    url: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript'
+                },
+                {
+                    type: 'book',
+                    name: '失控',
+                    img: 'http://img34.ddimg.cn/0/22/21032154-1_o.jpg'
+                },
+                {
+                    type: 'web',
+                    name: 'GigHub',
+                    url: 'https://github.com/'
+                }
+            ]
+        }
+        // 渲染数据至模板指定区域
+        var result = template('test', suggestions);
+        document.body.innerHTML = result;
+        console.log(result);
+    </script>
+</body>
+</html>

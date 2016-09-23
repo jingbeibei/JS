@@ -1,0 +1,36 @@
+安装MongoDB：
+
+1、选择Custom自定义安装，将安装位置改为C:\Mongo  【今后使用命令行比较方便】
+
+2、安装后进入C:\Mongo创建db文件夹和log文件夹
+	db	存放数据库
+	log	存放日志
+
+3、将MongoDB安装成Windows服务
+	创建配置文件并保存到C:\Mongo
+
+systemLog:
+    destination: file
+    path: c:\mongo\log\mongod.log
+storage:
+    dbPath: c:\mongo\db
+
+	以管理员身份运行cmd，进入C:\Mongo\bin执行
+mongod.exe --config c:\mongo\mongod.cfg --install
+	【注意部分32位系统需要在上面命令中增加引擎设置，具体见log中的错误日志】
+
+	mongod.exe是mongoDB的服务端程序
+	--config指明配置文件
+	--install安装成windows服务
+
+	在任务管理器 - 服务 - mongoDB    点右键启动服务/停止服务
+	在服务管理器中 可以设置服务的启动类型，如自动/手动等
+
+	在c:\mongo\bin文件夹中 运行(CMD) mongod.exe --remove
+
+
+
+
+
+
+

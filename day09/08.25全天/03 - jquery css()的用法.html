@@ -1,0 +1,67 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="author" content="name">
+        <title>jquery css()的用法</title>
+        <script src="jquery.js"></script>
+        <style>
+            html{
+                height: 100%;
+            }
+            div{
+                width: 100px;
+                height: 100px;
+                background-color: red;
+            }
+            p:nth-child(2){
+                color: greenyellow;
+            }
+        </style>
+    </head>
+    <body>
+        <p>访问匹配元素的样式属性</p>
+        <p>将所有段落的字体颜色设为红色并且背景为蓝色</p>
+        <div></div>
+        <button>OK</button>
+        <button onclick="jisuan()">计算</button>
+        <!---->
+        <script>
+            // 1
+            $('button').click(function(){
+                console.log($('p').css('color'));
+                
+                // 修改一个属性的值
+                // $('p').css("color","blue");
+                
+                // 修改多个属性的值
+                $('p').css({
+                    "color":"yellow",
+                    "backgroundColor":"black"
+                });
+                
+                // 逐渐增加div的大小
+                $('div').css({
+                    width:function(index, value){
+                        return parseFloat(value) * 1.2;
+                    },
+                    height:function(index, value){
+                        return parseFloat(value) * 1.2;
+                    }
+                });
+            });
+            
+            // 
+            function jisuan(){
+                // 得到div当前的宽和高
+                var w = $('div').width();
+                var h = $('div').height();
+                console.log(w + ', ' + h);
+                
+                // 得到window对象的宽和高
+                var w2 = $(window).width();
+                var h2 = $(window).height();
+                console.log('window的宽和高：' + w2 + ', ' + h2);
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,91 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="author" content="name">
+        <title>jquery工具</title>
+        <script src="jquery.js"></script>
+        <style>
+            
+        </style>
+    </head>
+    <body>
+        <script>
+            var arr1 = ['html', 'css', 'php', 'jquery'];
+            // 参数1 index表示数组的索引值
+            // 参数2 item表示数组的元素
+            $.each(arr1, function(index, item){
+                console.log(index);
+                console.log(item);
+            });
+            console.log('='.repeat(30));
+            // 参数2是λ写法的函数
+            $.each(arr1, (index, item)=>{
+                // console.log(index);
+                // console.log(item);
+                console.log(`${index} : ${item}`);
+            });
+            
+            // 
+            var p = {
+                name:'zhangsan',
+                age:6,
+                isMale:true
+            };
+            Object.defineProperty(p, 'birthday', {
+                writable:true,
+                enumerable:true
+            });
+            p.birthday = new Date();
+            $.each(p, (key, value)=>{
+                // key表示对象的属性
+                // value表示属性对应的取值
+                // console.log(key);
+                // console.log(value);
+                // 
+                console.log(`属性-${key} 值是${value}`);
+            });
+            
+            // for...in遍历对象
+            for(var key in p){
+                // key代表的是属性
+                // p[key]表示的是key属性对应的值
+                console.log(`属性-${key}=>${p[key]}`);
+            }
+            console.log('-'.repeat(30));
+            
+            // $.map()用法
+            var result = $.map([1, 2, 3], (item)=>{
+                return item + 4;
+            });
+            console.log(result);
+            
+            var arr2 = [1, 2, 3, 4, 5, 6, 7, 8];
+            // item表示数组元素
+            // index表示数组索引
+            var newArr2 = $.map(arr2, (item, index)=>{
+                // console.log(item + ',' + index);
+                return item * index;
+            });
+            console.log(newArr2);
+            
+            // $.inArray()可以找到某个元素在数组中的位置
+            console.log($.inArray(7, arr2));
+            
+            // $.merge()
+            var abc = ['a', 'b', 'c', 'd'];
+            var abcABC = $.merge(abc, 'html');
+            console.log(abcABC);
+            console.log($.merge(['html', 'css', 'javascript'], ['w3c', '菜鸟教程']));
+            
+            // $.grep()的使用
+            var evens = $.grep(arr2, (item, index)=>{
+                return item % 2 == 0;
+            });
+            console.log(evens);
+            var evens2 = $.grep(arr2, (item, index)=>{
+                return item % 2 == 0;
+            }, true);
+            console.log(evens2);
+        </script>
+    </body>
+</html>

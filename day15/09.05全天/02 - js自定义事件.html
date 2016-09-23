@@ -1,0 +1,79 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="author" content="name">
+        <title>j自定义事件</title>
+        <style>
+            div{
+                width: 100px;
+                height: 100px;
+                background-color: red;
+            }
+        </style>
+    </head>
+    <body>
+        <div></div>
+        <script>
+            // 1 自定义事件
+            var div = document.querySelector('div');
+            console.log(div);
+            // 给div添加自定义事件
+            div.addEventListener('我是自定义事件', function(event){
+                // 输出：'自定义事件的数据'
+                console.log(event.detail);
+                alert('观测到一个自定义事件!!!' + event.detail);
+            })
+            // 自定义事件
+            var cusEvent = document.createEvent('customEvent');
+            // 初始化自定义事件
+            // 参数1 ：自定义事件名
+            // 参数2：是否可以冒泡
+            // 参数3：是否可以取消一个事件
+            // 参数4：表示该事件的自定义数据
+            cusEvent.initEvent('我是自定义事件', true, true, '自定义数据');
+            // 派发事件
+            div.dispatchEvent(cusEvent);
+
+            // 2 自定义事件
+            // 给body添加一个监听事件
+            document.body.addEventListener('divcoverNumber', function(e){
+                alert('获得了一个数字：' + e.detail.num + ' | ' + e.detail.description);
+            });
+            // 给window对象添加监听事件
+            window.addEventListener('divcoverNumber', function(e){
+                alert('第2个监听者' + e.detail.num);
+            });
+            div.addEventListener('divcoverNumber', function(e){
+                console.log('divdivdiv');
+                alert('这是div监听到的事件' + e.detail.description);
+            });
+            
+            for(var i = 1; i <= 100; i++){
+                if(i % 3 == 0){
+                    // 创建一个数据对象
+                    var detail = {};
+                    detail.num = i;
+                    detail.description = '被3整除的数';
+                    
+                    // 
+                    var data = {};
+                    // 把对象detail赋值给另一个对象data的属性
+                    data.detail = detail;
+                    // 是否可以冒泡 true:可以冒泡
+                    data.bubbles = true;
+                    // 是否可以取消 true:可以取消
+                    data.cancelable = true;
+                    
+                    // 创建一个自定义事件
+                    // 创建自定义事件的另一种形式
+                    // 参数1：自定义事件名称
+                    // 参数2：自定义事件携带的数据
+                    var e = new CustomEvent('divcoverNumber', data);
+                    // 派发一个事件
+                    document.body.dispatchEvent(e);
+                    div.dispatchEvent(e);
+                }
+            }
+        </script>
+    </body>
+</html>

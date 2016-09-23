@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM节点-文本节点</title>
+</head>
+<body>
+    <ul>
+        <li>HTML5</li>
+        <li>CSS3</li>
+        <li>JS</li>
+        <li>PHP</li>
+    </ul>
+    <script>
+        var list = document.getElementsByTagName('ul')[0];
+        console.log(list);
+        // children属性返回的是指定元素的子元素集合
+        console.log(list.children);
+        // 4
+        console.log(list.children.length);
+        // childNodes得到的是所有子节点
+        // 空白字符被认为是文本节点
+        // 所以所有子节点的长度是9
+        console.log(list.childNodes);
+        console.log(list.childNodes.length);
+        // nodeName节点名称
+        // nodeType节点类型 1代表元素节点 2代表属性节点 3代表文本节点
+        console.log(list.childNodes[1].nodeName);
+        console.log(list.childNodes[0].nodeName);
+        console.log(list.childNodes[0].nodeType);
+        
+        // 
+        console.log(list.childNodes[1].childNodes[0]);
+        // nodeValue得到节点的值
+        console.log(list.childNodes[1].childNodes[0].nodeValue);
+        console.log(list.childNodes[1].childNodes[0].textContent);
+        
+        // 文本节点的操作
+        // 1 向文本节点追加内容
+        var textNode = list.childNodes[1].childNodes[0];
+        textNode.appendData(': HTML第5个版本');
+        // insertData(1,2)
+        // 参数1指位置
+        // 参数2指内容
+        textNode.insertData(1, '----');
+        
+        // 替换内容
+        // 参数1表示起始位置
+        // 参数2表示范围
+        // 参数3表示要替换的内容
+       textNode.replaceData(1, 4, '****');
+        // 删除
+       textNode.deleteData(1, 4);
+        console.log(textNode.length);
+    </script>
+</body>
+</html>

@@ -1,0 +1,240 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="jingbeibei">
+    <title></title>
+    <script src="jquery-3.1.0.js"></script>
+    <style>
+        @font-face {
+            font-family: "Glyphicons Halflings";
+            src: url("fonts/glyphicons-halflings-regular.eot?#iefix") format("embedded-opentype"), url("fonts/glyphicons-halflings-regular.woff2") format("woff2"), url("fonts/glyphicons-halflings-regular.woff") format("woff"), url("fonts/glyphicons-halflings-regular.ttf") format("truetype"), url("fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular") format("svg");
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        html,
+        body {
+            background: #d2d5d6;
+            height: 100%;
+            font-family: 微软雅黑, sans-serif;
+        }
+        
+        span {
+            cursor: pointer;
+        }
+        
+        a {
+            text-decoration: none;
+        }
+        
+        .wrapper {
+            width: 440px;
+            height: 500px;
+            margin: 0 auto;
+            background: #eef1f2;
+            position: relative;
+            top: 50%;
+            margin-top: -250px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0px 6px 7px #999;
+        }
+        
+        .background {
+            width: 100%;
+            height: 270px;
+            background-image: url(wf.png);
+            position: relative;
+            text-align: center;
+            background-size: 100%;
+            background-repeat: no-repeat;
+        }
+        
+        .content {
+            height: 100px;
+            width: 400px;
+            padding: 20px 20px 10px 20px;
+        }
+        
+        .content .music-massage {
+            display: inline-block;
+            width: 280px;
+            height: 100%;
+        }
+        
+        .content .music-massage p {
+            cursor: default;
+        }
+        
+        .content .musicname {
+            font-weight: bold;
+            font-size: 26px;
+            color: #455569;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+        
+        .content .musicer {
+            font-weight: bold;
+            font-size: 18px;
+            color: #455569;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+        
+        .content .record {
+            font-size: 14px;
+            color: #455569;
+            margin-top: 4px;
+        }
+        
+        .content .time {
+            float: right;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        
+        .basebar .progressbar {
+            display: block;
+            border: none;
+            width: 400px;
+            height: 4px;
+            margin: 0px auto 10px auto;
+            border-radius: 2px;
+            background-color: #414141;
+            position: relative;
+        }
+        
+        .controls {
+            width: 400px;
+            height: 50px;
+            padding: 20px 20px;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        
+        .controls .play-control,
+        .music-control {
+            display: inline-block;
+            font-family: "Glyphicons Halflings";
+        }
+        
+        .controls .play-control .btn1 {
+            display: inline-block;
+            width: 38px;
+            height: 38px;
+            border-radius: 19px;
+            background: #414141;
+            color: #d9d9d9;
+            font-size: 20px;
+            text-align: center;
+            line-height: 38px;
+        }
+        。m-pause:before{
+            content: "\e073"
+        }
+        .m-play:before{
+            content: "\e072"
+        }
+        /*.controls .play-control .btn1:before {
+            content: "\e073"
+        }
+        .controls .play-control .btn01:before {
+            content: "\e072"
+        }*/
+        
+        .controls .play-control .btn2:before {
+            content: "\e071"
+        }
+        
+        .controls .play-control .btn3:before {
+            content: "\e075"
+        }
+        
+        .controls .play-control .btn2,
+        .btn3 {
+            display: inline-block;
+            width: 28px;
+            height: 28px;
+            border-radius: 14px;
+            background: #414141;
+            color: #d9d9d9;
+            font-size: 16px;
+            text-align: center;
+            line-height: 28px;
+        }
+        
+        .controls .music-control {
+            float: right;
+            line-height: 38px;
+        }
+        
+        .controls .music-control span {
+            margin-left: 10px;
+            font-size: 22px;
+        }
+        
+        .controls .music-control span:hover {
+            text-shadow: 1px 1px 1px #ccc;
+        }
+        
+        .controls .music-control span.lyriced {
+            color: #414141
+        }
+        
+        .controls .music-control span.recycleed {
+            color: #414141
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <!-- 背景图片 -->
+        <div class="background"></div>
+        <div class="content">
+            <audio src=""></audio>
+            <div class="music-massage">
+                <p class="musicname">传奇</p>
+                <p class="musicer">王菲</p>
+            </div>
+            <!-- 分享，收藏，喜欢按钮 -->
+
+            <time>0:00</time>
+
+        </div>
+        <!-- 进度条 -->
+        <span class="basebar"> 
+              <progress value="0" class="progressbar"></progress>
+        </span>
+        <div class="controls">
+            <!-- 音乐播放。换频道，下一曲按钮 -->
+            <div class="play-control">
+                <span class="m-icon m-play btn1 " title="播放/暂停"></span>
+                <span class="m-icon m-prev btn2" title="上一首"></span>
+                <span class="m-icon m-next btn3" title="下一首"></span>
+            </div>
+            <!-- 循环播放，随机播放按钮 -->
+            <div class="music-control">
+                <aside>
+                    <span class="glyphicon glyphicon-volume-down" onclick="volumeDown();">-</span>
+                    <progress value="0.5"></progress>
+                    <span class="glyphicon glyphicon-volume-up" onclick="volumeUp();">+</span>
+                </aside>
+            </div>
+        </div>
+    </div>
+    <script src="01.js"></script>
+</body>
+
+</html>

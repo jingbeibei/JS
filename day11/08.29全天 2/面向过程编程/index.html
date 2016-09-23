@@ -1,0 +1,42 @@
+<!--
+    index.html
+-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="author" content="name">
+        <title>面向过程编程</title>
+        <script src="point.js"></script>
+        <script src="calc.js"></script>
+        <script src="line.js"></script>
+        <script src="rectangle.js"></script>
+        <style>
+            
+        </style>
+    </head>
+    <body>
+        <script>
+            // 使用new关键字+构造函数创建一个对象
+            var p1 = new Point(100, 100);
+            var p2 = new Point(300, 500);
+            var p3 = new Point(200, 160);
+            
+            showPoint(p1, 'green', 10);
+            showPoint(p2, 'rgba(0, 0, 255, 0.8)', 100);
+            showPoint(p3, 'red', 30);
+            
+            showLine(p1, p3, 'yellow', 10);
+            
+            // 用变量blackColor保留一下颜色
+            var blackColor = 'black';
+            // 如果需要将各个图形的参数记录下来，要用到大量的变量
+            // 这种情况会导致代码量混乱难以维护
+            // 
+            showRectangle(p1, p2, blackColor, 10);
+            // 如果想得到矩形边框的颜色,无法得到，除非把边框用变量保存下来了
+            // 因为颜色传入函数，用完就消失了，很难获取到
+            alert('矩形边框的颜色是：' + blackColor);
+            
+        </script>
+    </body>
+</html>

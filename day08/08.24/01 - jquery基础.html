@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jquery基础</title>
+    <script src="jquery-3.1.0.js"></script>
+</head>
+<body>
+    <p id="demo">juery是js的库文件</p>
+    <div>html5</div>
+    <span class="spa">span1</span>
+    <span>JavaScript</span>
+    <span>PHP</span>
+    <span class="spa">span2</span>
+    <script>
+        // 1 通过id找元素
+        // $()返回一个jquery对象
+        var ele = $('#demo').text();
+        alert(ele);
+        
+        // 用js语法修改元素文本内容
+        // document.getElementById('demo').innerHTML = '这是一个段落';
+        // 用juery来实现修改文本内容，同样的效果，jquery代码量更少
+        $('p').text('这是一个段落');
+        
+        // 2 通过类名找元素
+        console.log($('.spa').get(0)); // get()返回一个表签
+        // 下面的语法称为链式调用，前面返回的是jquery对象时才可以链式调用
+        // console.log($('.spa').first().text());   // first()返回一个对象
+        
+        // 筛选元素
+        // first() last() eq()都是返回一个jquery对象
+        // eq(index) index为整数的话从正向开始找，0表示第1个
+        // index为负数的话从后向前找，-1表示倒数第一个
+        console.log($('span').eq(2).text());
+        console.log($('span').eq(-2).text());
+    </script>
+</body>
+</html>

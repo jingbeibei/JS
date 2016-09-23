@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta name="author" content="张强">
+        <title>智游教育问答</title>
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="styles/all.css">
+    </head>
+    <body>
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container dropdown">
+                <div class="row">
+                    <a class="navbar-brand" href="#">智游教育</a>
+                    <div class="navbar-text pull-right text-right">
+                        <span id="ask"><span class="glyphicon glyphicon-plus"></span> 提问</span>&#x3000;
+                        <span id="user" class="dropdown-toggle" data-toggle="dropdown">
+                            <span class="glyphicon glyphicon-user"></span>
+                            <span>zhangqiang</span>
+                        </span>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li><a class="text-right" href="user.html">个人资料</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a class="text-right">退出</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <div class="container questions"></div>
+        <!--建立question-template模板，该模板用来显示"问题"-->
+        <script id="question-template" type="text/html">
+            <!--
+                data是服务端返回的数据，它是一个数组，数组里存放的是对象
+                res.status(200).json({code, message, data})
+                用each data as q遍历data
+                data是数组，q是对象
+            -->
+            {{each data as q}}
+            <div class="media" question="{{q.time | ms}}">
+                <div class="media-left">
+                    <a>
+                        <img class="media-object" src="/uploads/{{q.petname}}.jpg" onerror="this.src='/images/user.png'">
+                    </a>
+                </div>
+                <div class="media-body">
+                    <!--q.petname：用户名-->
+                    <h4 class="media-heading">{{q.petname}}</h4>
+                    {{q.content}}
+                    <div class="media-footing">
+                        {{q.time | formatTime}}
+                    </div>
+                </div>
+            </div>
+            <!--
+                q.answers是一个数组，表示所有"回答"
+                a表示数组元素，即每一个"回答"，它又是一个对象。
+
+            -->
+            {{each q.answers as a}}
+                <!--嵌入answer-template模板
+                    让它作为question-template的子模板
+                    并指定子模板的数据源为a-->
+                {{include 'answer-template' a}}
+            {{/each}}
+            {{/each}}
+        </script>
+        <!--建立answer-template模板，该模板用来显示"回答"-->
+        <script id="answer-template" type="text/html">
+            <div class="media media-child">
+                <div class="media-body">
+                    <!--这里的petname实际是a.petname-->
+                    <h4 class="media-heading">{{petname}}</h4>
+                    <!--a.content-->
+                    {{content}}
+                    <div class="media-footing">
+                        <!--a.time-->
+                        {{time | formatTime}}
+                    </div>
+                </div>
+                <div class="media-right">
+                    <a>
+                        <img class="media-object" src="/uploads/{{petname}}.jpg" onerror="this.src='/images/user.png'">
+                    </a>
+                </div>
+            </div>
+        </script>
+        <script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/jquery.cookie.js"></script>
+        <script src="js/template.js"></script>
+        <script src="scripts/index.js"></script>
+    </body>
+</html>

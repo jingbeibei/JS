@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset = "utf-8">
+        <meta name = "author" content = "张强">
+        <title>位置和尺寸</title>
+        <style>
+            /*7*/
+            body{
+                margin: 0;
+            }
+            section{
+                width: 350px;
+                height: 350px;
+                background-color: red;
+                margin: 100px auto;
+                border: 25px solid blue;
+                padding: 50px;
+                position: relative;//相对布局
+                /*box-sizing: border-box;*/
+            }
+            button{
+                position: absolute;
+                top: 100px;
+                left: 100px;
+                border: 10px solid yellow;
+                margin: 0;
+            }
+        </style>
+    </head>
+    <body>
+        <section>
+            <button>确定</button>
+        </section>
+        <script>
+            var sec = document.querySelector('section');
+            // clientWidth = padding + content
+            // 450 = 50*2 + 350;
+            console.log(sec.clientWidth); //内宽度
+            console.log(sec.clientHeight); //内高度
+            // clientTop clientLeft指的是border的宽度
+            console.log(sec.clientTop);
+            console.log(sec.clientLeft);
+            console.log('='.repeat(30));
+            
+            // x y左上角坐标
+            // width = content + border + padding
+            // height = content + border + padding
+            console.log(sec.getBoundingClientRect());
+             console.log('='.repeat(30));
+            console.log(sec.getBoundingClientRect().top);
+            
+            var btn = document.querySelector('button');
+            // offsetWidth = border + padding + content
+            // 500 = 25*2 + 50*2 + 350
+            console.log(sec.offsetWidth);
+            console.log(sec.offsetHeight);
+            console.log('='.repeat(30));
+            // offsetTop相对于顶部的偏移量，参考对象是父元素
+             console.log("offsetTop相对于顶部的偏移量，参考对象是父元素");
+            console.log(sec.offsetTop); // 100
+            console.log(sec.offsetLeft); // 120
+            
+            console.log(btn.offsetTop);
+            console.log(btn.offsetLeft);
+            // btn.offsetTop = '150px'; // 无法通过offsetTop改变top
+            // btn.style.top = '150px'; // 还要通过此方法改变top
+            console.log('*'.repeat(30));
+            
+            btn.onclick = function(){
+                var popup = document.createElement('div');
+                popup.style.width = '100px';
+                popup.style.height = '100px';
+                popup.style.border = '2px solid yellow';
+                popup.style.position = 'absolute';
+                popup.style.top = btn.offsetTop + btn.offsetHeight + 5 + 'px';
+                popup.style.left = btn.offsetLeft + 'px';
+                sec.appendChild(popup);
+                
+                var close = document.createElement('div');
+                close.style.width = '20px';
+                close.style.height = '20px';
+                close.style.backgroundColor = 'yellow';
+                close.style.position = 'absolute';
+                close.style.top = btn.offsetTop + btn.offsetHeight + 5 - 10 + 'px';
+                close.style.left = btn.offsetLeft + popup.offsetWidth - 10 +　'px';
+                close.style.borderRadius = '50%';
+                close.innerText = 'X';
+                close.style.textAlign = 'center';
+                close.style.cursor = 'pointer';
+                sec.appendChild(close);
+                close.onclick = function(){
+                    sec.removeChild(popup);
+                    sec.removeChild(close);
+                }
+            }
+            console.log("scrollTop向上滚动的距离");
+            // scrollTop向上滚动的距离
+            console.log(document.documentElement.scrollTop);
+            
+            // 页面自身的高度和宽度
+            console.log(document.documentElement.scrollHeight);
+            console.log(document.documentElement.scrollWidth);
+            
+            // 浏览器左上角顶点距离屏幕的坐标
+            // ff(-8, -8) chrome(0, 0)
+            console.log(window.screenX);
+            console.log(window.screenY);
+            
+            // 屏幕可用的宽度和高度(高度要减去windows任务栏的高度)
+            console.log(window.screen.availWidth);
+            console.log(window.screen.availHeight);
+            
+            // 屏幕的总宽度、总高度
+            console.log(window.screen.width);
+            console.log(window.screen.height);
+        </script>
+    </body>
+</html>

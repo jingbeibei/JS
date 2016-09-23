@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>动态换肤2</title>
+    <link rel="stylesheet" href="css/red.css">
+    <style>
+        body{
+            margin: 0;
+        }
+        nav{
+            padding: 10px;
+            background-color: #222;
+        }
+        span{
+            width: 20px;
+            height: 20px;
+            display: inline-block;
+        }
+        span:nth-child(1){
+            background-color: red;
+        }
+        span:nth-child(2){
+            background-color: blue;
+        }
+        span:nth-child(3){
+            background-color: green;
+        }
+        span:nth-child(4){
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <span data-color="red"></span>
+        <span data-color="blue"></span>
+        <span data-color="green"></span>
+        <span data-color="yellow"></span>
+    </nav>
+    <script>
+        var nav = document.getElementsByTagName('nav')[0];
+         console.log(nav);
+        // 添加鼠标单击事件
+        nav.onclick = function(event){
+            console.log(event.target);
+            
+            var ele = event.target;
+            if(ele.tagName == 'SPAN'){
+                var color = ele.dataset.color;
+                
+                var link = document.createElement('link');
+                link.href = 'css/' + color + '.css';
+                link.rel = 'stylesheet';
+                // 添加样式表到head,该方法会造成页面上的样式表越来越多
+                document.head.appendChild(link);
+            }
+        }
+    </script>
+</body>
+</html>

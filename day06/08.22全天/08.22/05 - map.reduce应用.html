@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset = "utf-8">
+        <meta name = "author" content = "张强">
+        <title>map/reduce应用</title>
+        <style>
+            
+        </style>
+    </head>
+    <body>
+        <script>
+            var str = '我在学习html';
+            console.log(str.includes('学'));
+            console.log(str.indexOf('我'));
+            // indexOf()如果没有找到包含的字符，返回结果是-1
+            console.log(str.indexOf('你'));
+            
+            var news = [
+                		'英国变性男子自拍3年间外貌变化',
+                        '日本熊本地震已造成9人死亡 900余人受伤',
+                        '动物界同性恋：非洲两雄狮“交配”',
+                        '日本一猩猩逃出动物园爬电线杆上张望 两小时后被捕',
+                        '一名特殊的高中同学：会英语日语的机器人被日本',
+                        '称奇！匠人把一堆废铁打造成骷髅机器人军团',
+                        '德国一男子徒手攀爬世界最高教堂自拍（组图）',
+                        '英被弃小狐狸对玩具熊又亲又抱萌化网友（组图）',
+                        '美男子用乐高积木为爱妻拍婚礼视频（图）',
+                        '英一动物园大猩猩优雅跳舞似芭蕾舞演员（组图）',
+                        '专访日本国会议员滨田和幸：世界旅游发展大会为',
+                        '国际能源署称全球柴油需求大降 料年底前实现微幅',
+                        '参加军演的美大兵在酒吧与菲警察大打出手',
+                        '900名德国警察突袭柏林最大妓院 查获现金10万欧元',
+                        '日本熊本县14日晚发生6.5级强震 已致9人死亡'
+            ];
+            console.log(news.length);
+            // keyword表示要找到关键字
+            var keyword = '美';
+            // num表示包含关键字的新闻标题的序号
+            var num = 0;
+            var result = news.map(function(item){
+                if(item.indexOf(keyword) > -1){
+                    return [true, item.replace(keyword,'<mark>'+keyword+'</mark>')];
+                }else return [false, item];
+            }).reduce(function(pre, current, index, arr){
+                if(!current[0]){
+                    // current[0]=true表示找到了包含'美'关键字的新闻标题
+                    return pre + (++num) + '、' + current[1] + '<br>';
+                }else return pre;
+            },'')
+            // console.log(result);
+            document.write(result);
+        </script>
+    </body>
+</html>

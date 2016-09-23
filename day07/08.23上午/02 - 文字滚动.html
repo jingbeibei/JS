@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset = "utf-8">
+        <meta name = "author" content = "张强">
+        <title>文字滚动</title>
+        <style>
+            body,
+            ul,
+            li,
+            a,
+            div{
+                padding: 0px;
+                margin: 0px;
+                font-size: 14px;
+            }
+            ul{
+                list-style: none;
+            }
+            a{
+                text-decoration: none;
+                color: #333;
+            }
+            #demo{
+                width: 350px;
+                height: 228px;
+                padding: 5px;
+                margin: 50px auto;
+                overflow: hidden;
+            }
+            #express li{
+                height: 25px;
+                margin: 0 5px;
+                line-height: 180%;
+                /*字间距*/
+                letter-spacing: 2px;
+                border-bottom: 1px solid #ccc;
+                cursor: pointer;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="demo">
+            <div id="demo1">
+                <ul id="express">
+                    <li><a href="">整个笔记本行业都在笑，小米又做虚假宣传</a></li>
+                    <li><a href="">整个笔记本行业都在笑，小米又做虚假宣传</a></li>
+                    <li><a href="">整个笔记本行业都在笑，小米又做虚假宣传</a></li>
+                    <li><a href="">整个笔记本行业都在笑，小米又做虚假宣传</a></li>
+                    <li><a href="">整个笔记本行业都在笑，小米又做虚假宣传</a></li>
+                    <li><a href="">整个笔记本行业都在笑，小米又做虚假宣传</a></li>
+                </ul>
+            </div>
+            <div id="demo2"></div>
+        </div>
+        <script>
+            var demo = document.getElementById('demo');
+            var demo1 = document.getElementById('demo1');
+            var demo2 = document.getElementById('demo2');
+            // 把demo1的内容赋值给demo2
+            demo2.innerHTML = demo1.innerHTML;
+            // 给demo1 demo2赋值同样的高度
+            // offsetHeght = height + border + padding
+            demo1.style.height = demo.offsetHeight + 'px';
+            demo2.style.height = demo.offsetHeight + 'px';
+            
+            // 
+            function scrollUp(){console.log('3409394')
+                if(demo.scrollTop >= demo.offsetHeight){
+                    demo.scrollTop = 0;
+                }else demo.scrollTop++;
+            }
+            
+            // 启动一个定时器,实现自动滚动
+            var timer = window.setInterval(scrollUp, 50);
+            
+            // 添加两个鼠标事件
+            demo.onmouseover = function(){
+                clearInterval(timer);
+            }
+            demo.onmouseout = function(){
+                timer = window.setInterval(scrollUp, 50);
+            }
+        </script>
+    </body>
+</html>

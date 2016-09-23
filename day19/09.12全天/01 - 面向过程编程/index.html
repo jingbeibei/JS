@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="author" content="张强">
+		<title>编程范式-面向过程编程</title>
+		<script src="point.js"></script>
+		<script src="calc.js"></script>
+		<script src="line.js"></script>
+		<script src="rectangle.js"></script>
+	</head>
+	<body>
+		
+		<script>
+//			使用 new 构造函数() 创建一个对象
+			var p1 = new Point(100, 100)
+			var p2 = new Point(300, 500)
+			var p3 = new Point(200, 160)
+			
+//			如果需要将各个图形的参数记录下来，则需要大量的变量！！
+//			最终会导致代码混乱难以维护
+//			var recColor = 'black', lineColor = 'yellow', point1Color = 'red',
+//			point2Color = 'green'
+			
+			showPoint(p1, 'green', 10)
+			showPoint(p2, 'rgba(0, 0, 255, 0.8)', 100)
+			showPoint(p3, 'red', 30)
+
+			showLine(p1, p3, 'yellow', 10)
+
+			showRectangle(p1, p2, 'black', 10)
+//			showRectangle(p1, p2, recColor, 10)
+			
+//			想一下，如果想在这里写代码得到距形的颜色该怎么办：
+//			alert('距形的颜色是：' + ??????????)
+//			除非在上面使用变量保留了各参数的值，否则很难获取距形的颜色，
+//			因为颜色传入函数，用完就丢失了
+		</script>
+	</body>
+</html>

@@ -1,0 +1,82 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="author" content="name">
+        <title>jquery animate()的使用</title>
+        <script src="jquery.js"></script>
+        <script src="jquery.color.js"></script>
+        <style>
+            div{
+                position: absolute;
+                width: 100px;
+                height: 100px;
+                background-color: red;
+            }
+        </style>
+    </head>
+    <body>
+        <!--<button id="go">Run</button>
+        <div id="block">Hello</div>
+        <script>
+            $('#go').click(function(){
+                $('#block').animate({
+                    width:"90%",
+                    height:"100%",
+                    fontSize:"10em",
+                    borderWidth:10
+                }, 1000);
+            });
+        </script>-->
+        
+        <!--<button id="left"><<</button>
+        <button id="right">>></button>
+        <div class="block">html5</div>
+        <script>
+            $("#right").click(function(){
+                $(".block").animate({left: '+50px'}, "slow");
+            });
+
+            $("#left").click(function(){
+                $(".block").animate({left: '-50px'}, "slow");
+            });
+        </script>-->
+        
+        <progress value="0"></progress>
+        <h1>jquery动画参数色彩过渡</h1>
+        <button>效果</button>
+        <ol>
+            <li>html5</li>
+            <li>css3</li>
+            <li>JavaScript</li>
+            <li>PHP</li>
+            <li>jquery</li>
+        </ol>
+        <script>
+            $(':header').click(function(){
+                $('ol').css('position','absolute').animate({
+                    left: "400px",
+                    backgroundColor: "blue",
+                    color: "white"
+                }, {
+                    duration: 5000,
+                    // function(animate, progress, ms)
+                    // 每一步动画完成后调用的函数
+                    // 参数1表示动画本身
+                    // 参数2表示动画进度
+                    // 参数3表示动画时间的单位：毫秒
+                    progress:function(animate, progress, ms){
+                        $('progress').val(progress);
+                    }
+                }).animate({
+                    top: 600 + 'px',
+                    backgroundColor:'red'
+                },{
+                    duration:3000,
+                    progress:function(animate, progress, ms){
+                        $('progress').val(progress);
+                    }
+                });
+            });
+        </script>
+    </body>
+</html>

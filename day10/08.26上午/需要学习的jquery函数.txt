@@ -1,0 +1,4 @@
+$.each()
+$.map()
+$.grep()
+animate()

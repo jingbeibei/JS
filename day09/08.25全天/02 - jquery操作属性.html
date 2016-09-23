@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="author" content="name">
+        <title>jquery属性操作</title>
+        <script src="jquery.js"></script>
+        <style>
+            .text-color{
+                color: red;
+            }
+        </style>
+    </head>
+    <body>
+        <img src="img/01.png" alt="这是一张图片">
+        <div class="demo">这是一个div</div>
+        <p>HTML5</p>
+        <button onclick="change()">OK</button>
+        <!--
+            
+        -->
+        <script>
+            // 1 用js操作属性节点
+            var attr = document.getElementsByTagName('img')[0].getAttribute('src');
+            // alert(attr);
+            
+            // 2 用jquery得到属性的值
+            // alert($('img').attr('alt'));
+            $('img').attr("src",'img/02.png');
+            function change(){
+                $('img').attr({
+                    src:"img/03.png",
+                    alt:'this is png'
+                });
+                // 移除div的class属性
+                $('div').removeAttr('class');
+                // toggleClass()用于切换一个类，如果有就删除、否则就添加
+                $('p').toggleClass('text-color');
+
+            }
+                // 给p添加/删除一个类
+                $('p').hover(function(){
+                    $(this).addClass('text-color');
+                },function(){
+                    $(this).removeClass('text-color');
+                });
+                
+        </script>
+    </body>
+</html>

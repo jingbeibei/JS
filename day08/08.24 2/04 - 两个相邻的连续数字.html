@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="author" content="name">
+        <title>两个相邻的连续数字</title>
+        <style>
+            
+        </style>
+    </head>
+    <body>
+        <script>
+            var current = 0;
+            function show(){
+                var pre = current;
+                current = ++current % 4;
+                console.log(pre, current);
+            }
+            setInterval(show, 1000);
+        </script>
+    </body>
+</html>

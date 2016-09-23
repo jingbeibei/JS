@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="author" content="name">
+        <title>jquery slideToggle()用法</title>
+        <script src="jquery.js"></script>
+        <style>
+            div{
+                width: 100px;
+                height: 100px;
+                background-color: red;
+            }
+        </style>
+    </head>
+    <body>
+        <div style="display:none"></div>
+        <button>OK</button>
+        <script>
+            $('button').click(function(){
+                // slideToggle()有一些预定义好的参数
+                // slow: 600ms
+                // 参数1是动画持续的时长
+                // 参数2是动画完成后的回调函数
+            //    $('div').slideToggle(2000, function(){
+            //        alert('动画完成啦');
+            //    }); 
+            
+            // slideDown()的用法
+            // 把隐藏的元素向下滑动，让它显示出来
+            $('div').slideDown();
+            // slideUp()把显示的元素隐藏
+            });
+        </script>
+    </body>
+</html>

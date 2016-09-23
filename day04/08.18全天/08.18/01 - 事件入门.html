@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset = "utf-8">
+        <meta name = "author" content = "张强">
+        <title>事件入门</title>
+        <style>
+            div{
+                width: 300px;
+                height: 50px;
+                background-color: red;
+                color: white;
+            }
+        </style>
+    </head>
+    <body>
+        <!--
+            事件：某件事情的发生就是事件.
+            JS中的事件：鼠标操作、键盘操作、触控操作、
+            文档的生命周期、窗口操作等等。
+            事件流：包含挖洞、冒泡
+            挖洞：由不太具体的节点先接收到事件。例如：单击了div
+            html -> body -> section -> div
+            冒泡：最具体的元素接收事件(文档中嵌套层次最深的那个节点接收)
+        -->
+        <section>
+            <div>这个可以点击</div>
+        </section>
+        <script>
+            var sec = document.querySelector('section');
+            var div = document.querySelector('div');
+            // addEventListener()添加事件监听
+            // 参数1是事件名
+            // 参数2是事件发生时执行的函数
+            // div.addEventListener('click', function(){
+            //     alert('单击了div标签');
+            // });
+            
+            // 给html添加单击事件
+            // 参数3表示事件发生的阶段 true挖洞 false冒泡
+            document.documentElement.addEventListener('click',function(){
+                alert('HTML-挖洞');
+            }, true);
+            document.documentElement.addEventListener('click',function(){
+                alert('HTML-冒泡');
+            }, false);
+            
+            // 给body添加监听鼠标单击事件
+            document.body.addEventListener('click',function(){
+                alert('body-挖洞');
+            },true);
+            document.body.addEventListener('click',function(){
+                alert('body-冒泡');
+            },false);
+            
+            sec.addEventListener('click', function(){
+                alert('section-挖洞');
+            },true);
+            sec.addEventListener('click', function(){
+                alert('section-冒泡');
+            },false);
+            
+            div.addEventListener('click', function(){
+                alert('div-挖洞');
+            },true);  
+            div.addEventListener('click', function(){
+                alert('div-冒泡');
+            },false);                      
+        </script>
+    </body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>动态换肤1</title>
+    <link rel="stylesheet" href="css/red.css">
+    <link rel="stylesheet" href="css/blue.css">
+    <link rel="stylesheet" href="css/green.css">
+    <link rel="stylesheet" href="css/yellow.css">
+    <style>
+        body{
+            margin: 0;
+        }
+        nav{
+            padding: 10px;
+            background-color: #222;
+        }
+        span{
+            width: 20px;
+            height: 20px;
+            display: inline-block;
+        }
+        span:nth-child(1){
+            background-color: red;
+        }
+        span:nth-child(2){
+            background-color: blue;
+        }
+        span:nth-child(3){
+            background-color: green;
+        }
+        span:nth-child(4){
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <span data-color="0"></span>
+        <span data-color="1"></span>
+        <span data-color="2"></span>
+        <span data-color="3"></span>
+    </nav>
+    <script>
+        var links = document.getElementsByTagName('link');
+        
+        function enableLinks(index){
+            for(var i = 0; i < links.length; i++){
+                // .sheet样式表
+                // .disabled关闭
+                // i!=index判断i是否不等于index
+                links[i].sheet.disabled = i!=index;
+            }
+        }
+        enableLinks(0);
+        
+        // 给nav添加鼠标点击事件
+        // event：事件对象
+        document.querySelector('nav').onclick = function(event){
+            var index = event.target.dataset.color;
+            console.log(index);
+            // 调用enableLinks()
+            enableLinks(index);
+        }
+    </script>
+</body>
+</html>

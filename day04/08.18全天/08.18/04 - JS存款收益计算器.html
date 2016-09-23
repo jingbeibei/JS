@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="author" content="张强">
+        <title></title>
+        <style>
+        </style>
+    </head>
+    <body>
+        <script>
+            // 获取body
+            document.body.style.margin = '0'
+            // 标题
+            document.title = '存款收益计算器'
+            // 添加标签header
+            var header = document.createElement('header')
+            header.innerText = '存款收益计算器'
+            header.style.backgroundColor= '#ff9900'
+            header.style.color = 'white'
+            header.style.height = '2.8rem'
+            header.style.lineHeight = '2.8rem'
+            header.style.textAlign = 'center'
+            
+            document.body.appendChild(header)
+            // 添加标签form
+            var form = document.createElement('form')
+            form.style.margin = '0.5rem'
+            form.action = '#'
+            // alert(form.action)
+            document.body.appendChild(form)
+            // 添加form里的input
+            var input = document.createElement('input')
+            input.type = 'text'
+            input.id = 'benjin'
+            input.placeholder = '存款本金'
+            input.required = '0'
+            input.autocomplete = 'off'
+            input.style.border = '1px solid #ff9900'
+            input.style.height = '2.4rem'
+            input.style.padding = '0.7rem'
+            input.style.width = '100%'
+            input.style.borderRadius = '0.3rem'
+            input.style.margin = '0.25rem 0'
+            
+            form.appendChild(input)
+            
+            // 添加form里的按钮
+            var input1 = document.createElement('input')
+            input1.type = 'radio'
+            input1.id = '5年'
+            input1.name = 'isMale'
+            input1.className = 'qixian'
+            input1.checked = '0'
+            form.appendChild(input1)
+            var label1 = document.createElement('label')
+            label1.for = '5年'
+            label1.innerText = '5年'
+            form.appendChild(label1)
+            
+             var input2 = document.createElement('input')
+            input2.type = 'radio'
+            input2.id = '3年'
+            input2.name = 'isMale'
+            input2.className = 'qixian'
+            form.appendChild(input2)
+            var label2 = document.createElement('label')
+            label2.for = '3年'
+            label2.innerText = '3年'
+            form.appendChild(label2)
+            
+             var input3 = document.createElement('input')
+            input3.type = 'radio'
+            input3.id = '2年'
+            input3.name = 'isMale'
+            input3.className = 'qixian'
+            form.appendChild(input3)
+            var label3 = document.createElement('label')
+            label3.for = '2年'
+            label3.innerText = '2年'
+            form.appendChild(label3)
+            
+             var input4 = document.createElement('input')
+            input4.type = 'radio'
+            input4.id = '1年'
+            input4.name = 'isMale'
+            input4.className = 'qixian'
+            form.appendChild(input4)
+            var label4 = document.createElement('label')
+            label4.for = '1年'
+            label4.innerText = '1年'
+            form.appendChild(label4)
+            
+             var input5 = document.createElement('input')
+            input5.type = 'radio'
+            input5.id = '6个月'
+            input5.name = 'isMale'
+            input5.className = 'qixian'
+            form.appendChild(input5)
+            var label5 = document.createElement('label')
+            label5.for = '6个月'
+            label5.innerText = '6个月'
+            form.appendChild(label5)
+            
+             var input6 = document.createElement('input')
+            input6.type = 'radio'
+            input6.id = '3个月'
+            input6.name = 'isMale'
+            input6.className = 'qixian'
+            form.appendChild(input6)
+            var label6 = document.createElement('label')
+            label6.for = '3个月'
+            label6.innerText = '3个月'
+            form.appendChild(label6)
+            
+            // 添加button
+            var button = document.createElement('button')
+            button.innerText = '开始计算'
+            button.style.border = '1px solid darken(#ff9900, 5%)'
+            button.style.backgroundColor = '#ff9900'
+            button.style.color = 'white'
+            button.style.height = '2.4rem'
+            button.style.padding = '0.4rem'
+            button.style.width = '100%'
+            button.style.borderRadius = '0.3rem'
+            button.style.margin = '0.25rem 0'
+            button.style.fontSize = '0.9rem'
+            // button.onclick = 'calc()'
+            button.addEventListener('click',function(event){
+			    // 阻止表单自动提交
+				event.preventDefault();
+                // calc()实现计算
+				calc();
+			})
+            form.appendChild(button);
+            
+            // 添加section
+            var section = document.createElement('section')
+            section.style.margin = '0.5rem 0.5rem 3rem 0.5rem'
+            document.body.appendChild(section)
+            
+            // 添加dl
+            var dl = document.createElement('dl')
+            dl.style.margin='1rem 0'
+            dl.style.fontSize = '0.8rem'
+            dl.style.color = '#333'
+            section.appendChild(dl)
+            
+            // 添加dt
+            var dt1 = document.createElement('dt')
+            dt1.innerText = '总额：'
+            dt1.style.float = 'left'
+            dl.appendChild(dt1)
+            
+            
+            var dd = document.createElement('dd')
+            dd.id = 'zonge'
+            dd.innerText = '0.00'
+            dd.style.float = 'right'
+            dl.appendChild(dd)
+            
+            
+            function calc(){
+                // 获取输入
+                var benjin = document.getElementById('benjin').value;
+                console.log(typeof benjin);// string类型
+                
+                // 转为数字
+                benjin = parseFloat(benjin);
+                // 判断输入是否是数字，如果不是数字，程序中断退出。
+                if(isNaN(benjin)) return;
+                
+                var s = document.getElementsByClassName('qixian');
+                if(s.length>0) {  
+                for(var index=0;index<s.length;index++){   
+                if(s[index].checked){
+                break;     }  
+                        } 
+                    } 
+                switch (index){
+                    case 0:qixian = 60
+                    lilv = 2.75
+                    break
+                    case 1:qixian = 36
+                    lilv = 2.75
+                    break
+                    case 2:qixian = 24
+                    lilv = 2.25
+                    break
+                    case 3:qixian = 12
+                    lilv = 1.75
+                    break
+                    case 4:qixian = 6
+                    lilv = 1.55
+                    break
+                    case 5:qixian = 3
+                    lilv = 1.35
+                    break
+                }
+                    // 计算总额
+                    var zonge1 = benjin + benjin * lilv * 0.01 * (qixian / 12);
+                    // 显示总额
+                    document.getElementById('zonge').innerHTML = zonge1.toFixed(2);
+                }
+            // document.all获取所有标签
+            document.all;
+            console.log(document.all.length);
+			// 在for循环内把所有标签的box-sizing设置为border-box
+            for(var i = 0;i < document.all.length; i++){
+                var ele = document.all[i];
+                if(ele.tagName == 'SCRIPT') continue
+                if(ele.tagName == 'HTML') continue
+                if(ele.tagName == 'META') continue
+                
+                if(ele.style){
+                    ele.style.boxSizing = 'border-box'
+                }
+            }
+        </script>
+    </body>
+</html>

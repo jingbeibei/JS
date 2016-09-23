@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf8">
+    <title>文字无间断滚动效果，sky整理收集。</title>
+</head>
+
+<body>
+    <!--<a href="<#ZC_BLOG_HOST#>">站长特效网</a>,站长必备的高质量网页特效和广告代码。zzjs.net，站长js特效。<hr>-->
+    <!--欢迎来到站长特效网，我们网站收集大量高质量js特效，提供许多广告代码下载，网址：www.zzjs.net，zzjs@msn.com,用.net打造靓站-->
+    <div id="demo" onmouseover="clearInterval(timer)" onmouseout="timer=setInterval(mar,30)" style="overflow:hidden; height:60px; width:100px;">
+        <div id="demo1">
+            欢迎你来到ddddddddddddddd 站长特效网 我们的网址 www.zzjs.net 欢迎再次光临 祝您愉快
+        </div>
+        <div id="demo2"></div>
+    </div>
+    <script>
+var t=getid("demo"),t1=getid("demo1"),t2=getid("demo2"),sh=getid("show"),timer;
+t2.innerHTML=t1.innerHTML;
+function mar(){
+if(t2.offsetTop<=t.scrollTop)
+t.scrollTop-=t1.offsetHeight;
+else
+t.scrollTop++;
+}
+timer=setInterval(mar,30);
+function getid(id){
+return document.getElementById(id);
+}
+</script>
+</body>
+
+</html>

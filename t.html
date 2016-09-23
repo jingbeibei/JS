@@ -1,0 +1,64 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="author" content="jingbeibei">
+        <title></title>
+    
+        <style>
+            
+        </style>
+    </head>
+    <body>
+        
+        <script >
+            var div = document.createElement('div')
+            div.id = 'container'
+            div.style.backgroundColor= '#ff0000'
+            div.style.height = '100px'
+            div.style.width = '100px'
+            // document.body.appendChild(div);
+            div.onmouseover=function mOver(){
+	            div.style.backgroundColor= '#0000ff'
+            }
+            div.onmouseout=function mOut(){
+	            div.style.backgroundColor= '#ff0000'
+            }
+
+
+            function Student(name,age,isMale,height,weight,addr){
+                var name=name;
+                var age=age;
+                var isMale=isMale;
+                var height=height;
+                var weight=weight;
+                var addr=addr;
+                // document.write("名字："+name+",年龄:"+age+",性别:"+isMale+",身高:"+height+",体重:"+weight+",地址："+addr);
+            }
+            // new Student("adfds","2","3","4","5","6");
+
+            // person=new Object();
+            // person.name="景贝贝";
+            // person.sex="男";
+            // person.age=23;
+            // person.skill=function(){
+            //     document.write("技能：Android,HTML5");
+            // }
+            // person.skill();
+
+
+
+            var jingbeibei = {
+            name : '景贝贝',
+            sex : '男',
+            age : 23,
+            programmingLanguage:function(){
+                 var span = document.createElement('span');
+                 span.innerText = '语言：Android，HTML5，JS';
+                 document.body.appendChild(span);
+
+            }
+        }
+        jingbeibei.programmingLanguage();
+        </script>
+    </body>
+</html>

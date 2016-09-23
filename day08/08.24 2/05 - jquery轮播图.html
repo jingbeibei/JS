@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset = "utf-8">
+        <meta name = "author" content = "张强">
+        <title>jquery轮播图</title>
+        <script src="jquery-3.1.0.js"></script>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            a{
+                text-decoration: none;
+            }
+            ul{
+                list-style: none;
+            }
+            .slider,
+            .slider-panel img,
+            .slider-extra{
+                width: 650px;
+                height: 410px;
+            }
+            .slider{
+                text-align: center;
+                margin: 30px auto;
+                position: relative;
+            }
+            .slider-panel{
+                position: absolute;
+            }
+            .slider-nav{
+                position: absolute;
+                bottom: 5px;
+                left: 50%;
+            }
+            .slider-nav li{
+                background-color: #3e3e3e;
+                border-radius: 50%;
+                color: white;
+                cursor: pointer;
+                margin: 0 20px;
+                text-align: center;
+                display: inline-block;
+                width: 25px;
+                height: 25px;
+            }
+            .slider-nav .slider-item-selected{
+                background-color: blue;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="slider">
+            <!--ul里的4个li表示4张图片-->
+            <ul class="slider-main">
+                <li class="slider-panel">
+                    <a href=""></a>
+                    <img src="image/01.png" alt="">
+                </li>
+                <li class="slider-panel">
+                    <a href=""></a>
+                    <img src="image/02.png" alt="">
+                </li>
+                <li class="slider-panel">
+                    <a href=""></a>
+                    <img src="image/03.png" alt="">
+                </li>
+                <li class="slider-panel">
+                    <a href=""></a>
+                    <img src="image/04.png" alt="">
+                </li>
+            </ul>
+            <!--下面的div表示图片指示器-->
+            <div class="slider-extra">
+                <ul class="slider-nav">
+                    <li class="slider-item">1</li>
+                    <li class="slider-item">2</li>
+                    <li class="slider-item">3</li>
+                    <li class="slider-item">4</li>
+                </ul>
+            </div>
+        </div>
+        <script>
+            // 图片张数
+            var length;
+            // currentIndex当前图片索引，默认是0
+            var currentIndex = 0;
+            // 用于保存播放的定时器
+            var interval;
+            // hasStarted表示是否开始播放，一开始是false
+            var hasStarted = false;
+            // 
+            var t = 3000;
+            
+            // length = 4
+            length = $('.slider-panel').length;
+            // 不是第1个的隐藏
+            $('.slider-panel:not(:first)').hide();
+            // 
+            $('.slider-item:first').addClass('slider-item-selected');
+            
+            // 鼠标的悬停事件
+            // 参数1 鼠标放上来的时执行
+            // 参数2 鼠标移走之后执行
+            $('.slider-panel').hover(function(){
+                stop();
+            }, function(){
+                start();
+            });
+            
+            // play()播放实现轮播
+            // 从preIndex翻页到currentIndex
+            // preIndex翻页的起始页
+            // currentIndex要翻到的那一页
+            function play(preIndex, currentIndex){
+                // fadeOut()淡出函数，参数是时间500ms
+                $('.slider-panel').eq(preIndex).fadeOut(500).parent().children().eq(currentIndex).fadeIn(1000);
+                // 移除将要淡出的图片对应的指示器的样式
+                $('.slider-item').removeClass('slider-item-selected');
+                $('.slider-item').eq(currentIndex).addClass('slider-item-selected');
+            }
+            
+            // 向后翻页的函数
+            // 在这里调用play(),给它传入参数
+            function next(){
+                var preIndex = currentIndex;
+                currentIndex = ++currentIndex % length;
+                // 调用play()函数传入参数
+                // 参数是两个相邻的数字并且是循环出现的
+                play(preIndex, currentIndex);
+            }
+            
+            // start()函数表示开始播放
+            function start(){
+                if(!hasStarted){
+                    // 播放时把标志hasStarted改为true
+                    hasStarted = true;
+                    interval = setInterval(next ,t);
+                }
+            }
+            start();
+            // 停止播放
+            function stop(){
+                clearInterval(interval);
+                hasStarted = false;
+            }
+            
+        </script>
+    </body>
+</html>

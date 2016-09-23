@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset = "utf-8">
+        <meta name = "author" content = "张强">
+        <title>查找元素</title>
+        <style>
+            
+        </style>
+    </head>
+    <body>
+        <a class="red-link col-md-6" id="baiduID" href="https://www.baidu.com">百度搜索</a>
+        <a class="red-link col-md-2" id="baiduID" href="https://www.baidu.com">百度<span>****</span>搜索</a>
+        
+        <input name="xingbie" id="xingbie0" value="html0" type="text">HTML5
+        <input name="xingbie" id="xingbie1" value="html1" type="text">CSS3
+        <input name="xingbie" id="xingbie2" value="html2" type="text">JavaScript
+        <script>
+            // getElementById()找的仅仅只有一个，要么就是null(空)
+            var baidu = document.getElementById('baiduID');
+            console.log(baidu);
+            // .tagName得到标签名
+            console.log(baidu.tagName);
+            // .id得到是标签的id
+            console.log(baidu.id);
+            // .attributes得到所有的属性
+            console.log(baidu.attributes);
+            // 找其中一个属性
+            console.log(baidu.attributes[0]);
+            
+            // 通过name属性找元素，找到的是一个节点列表，找其中一个也是通过下标的方式
+            var sex = document.getElementsByName('xingbie');
+            console.log(sex);
+            // 注意：getElementsByName(),不能够直接用.tagName得到标签名
+            console.log(sex.tagName); //undefined(未定义)
+            console.log(sex[0].tagName); //可以得到标签名
+            // 类似下面的情况:
+            var a = 3, b;
+            console.log(a); // 3
+            console.log(b);  //undefined 未定义的，因为b没有初始值
+            
+            // 如果没有找到的话，输出是空列表
+            var sex2 = document.getElementsByName('xingbie2');
+            console.log(sex2);
+            
+            // links找的是两个元素
+            var links = document.getElementsByClassName('red-link');
+            console.log(links[0]);
+            console.log(links[1]);
+            // links2找的是一个元素
+            var links2 = document.getElementsByClassName('red-link col-md-2');
+            console.log(links2[0]);
+            
+            console.log(links2[0].innerHTML);
+            console.log(links2[0].innerText);
+            
+            // querySelector()通过选择器查找元素，找到是1个 
+            var ele = document.querySelector('body>a:nth-child(2)');
+            console.log(ele);
+            // querySelectorAll()找到的是符合条件的元素列表(多个)
+            var ele2 = document.querySelectorAll('body>a.red-link');
+            console.log(ele2);
+        </script>
+    </body>
+</html>

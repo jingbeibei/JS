@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="author" content="张强">
+		<title>编程范式-面向对象编程</title>
+		<script src="point.js"></script>
+		<script src="line.js"></script>
+		<script src="rectangle.js"></script>
+	</head>
+	<body>
+		<script>
+//			对象将其所需要的数据和功能全部整合为一个整体
+//			对象通常使用名词命名
+			var p1 = new Point(100, 100)
+			var p2 = new Point(300, 500)
+			var p3 = new Point(500, 160)
+			
+			p1.radius = 20
+			
+			p2.radius = 30
+			p2.color = 'green'
+			
+			p3.radius = 50
+			p3.color = 'blue'
+			
+			p1.show()
+			p2.show()
+			p3.show()
+			
+			// alert('p2的颜色是：' + p2.color)
+			// alert('p1的半径：' + p1.radius)
+//			可以很方便地随时获取对象的状态信息
+
+			var line1 = new Line(p1, p2)
+			line1.lineSize = 3
+			line1.color = 'blue'
+			line1.show()
+			
+			var line2 = new Line(p2, p3)
+			line2.lineSize = 5
+			line2.color = 'green'
+			line2.show()
+			
+			var line3 = new Line(p3, p1)
+			line3.lineSize = 10
+			line3.color = 'red'
+			line3.show()
+			
+			var rectangle1 = new Rectangle(p1, p2)
+			rectangle1.lineSize = 1
+			rectangle1.show()
+		</script>
+	</body>
+</html>

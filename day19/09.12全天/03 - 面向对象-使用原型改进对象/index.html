@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="author" content="张强">
+		<title>使用原型归集对象的共用属性和方法</title>
+		<script src="Point.js"></script>
+		<script src="Line.js"></script>
+		<script src="Rectangle.js"></script> 
+	</head>
+	<body>
+		<script>
+			var p1 = new Point(100, 100)
+			var p2 = new Point(300, 500)
+			var p3 = new Point(500, 160)
+			
+			p1.radius = 20
+			p2.radius = 30
+			p2.color = 'green'
+			p3.radius = 50
+			p3.color = 'blue'
+			
+			p1.show()
+			p2.show()
+			p3.show()
+			
+			var line1 = new Line(p1, p2)
+			line1.lineSize = 3
+			line1.color = 'blue'
+			line1.show()
+			
+			var line2 = new Line(p2, p3)
+			line2.lineSize = 5
+			line2.color = 'green'
+			line2.show()
+			
+			var line3 = new Line(p3, p1)
+			line3.lineSize = 10
+			line3.color = 'red'
+			line3.show()
+			
+			var rectangle1 = new Rectangle(p1, p2)
+			rectangle1.lineSize = 1
+			rectangle1.show()
+		</script>
+	</body>
+</html>

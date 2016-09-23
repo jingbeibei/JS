@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset = "utf-8">
+        <meta name = "author" content = "张强">
+        <title>对象及对象的使用</title>
+        <style>
+            
+        </style>
+    </head>
+    <body>
+        <script>
+            // js对象的概念
+            // new Array();
+            // new Date();
+            // new Number();
+            // new Boolean();
+            // 学生对象stu
+            var stu = new Object();
+            
+            // 不使用对象保存数据
+            var name, age, isMale, height, weight, color;
+            name = 'zhangSan';
+            age = 23;
+            isMale = true;
+            height = 183.3;
+            weight = 165;
+            color = 0xFFFFCC;
+            // 新增专业
+            var course = 'HTML5';
+            
+            // 如果还有多个人，就需要定义更多的变量
+            var name1, age1, isMale1;
+            var name1, age1, isMale1;
+            // 此处省去N个...
+            
+            function showPerson(){};
+            // 下面的写法和上面的等价
+            var showPerson = function(n, a ,i, h, w,c, course){
+                console.log('名字' + n);
+                console.log('年龄' + a);
+            }
+            // 调用showPerson
+            showPerson('zhangSan', 23, true, 179, 165, 'black', 'HTML5');
+            
+            // 对象的使用场景1：作为数据的容器
+            var p = new Object();
+            // 给对象p添加属性
+            p.name = 'zhangSan';
+            p.age = 32;
+            p.isMale = false;
+            p.height = 179;
+            p.weight = 167;
+            p.color = 0xFFFFCC;
+            p.course = 'HTML5';
+            console.log(p);
+            // 以对象的方式输出p
+            console.dir(p);
+            
+            var showP = function(para){
+                console.log(para);
+            }
+            // 把对象p作为实际参数传递给showP()
+            showP(p);
+            
+            // 对象的使用场景2：作为方法的容器
+            // 对象内部的函数称为方法
+            Math.random();
+            Math.abs();
+            Math.sqrt();
+            Math.floor();
+            
+            // 把函数放入对象内部
+            p.show = function(){
+                // 当一个函数写到对象内部时，可以用this代表当前对象
+                console.log('名字：' + this.name);
+                console.log('年龄：' + this.age);
+            }
+            // 调用对象内部的方法
+            p.show();
+        </script>
+    </body>
+</html>

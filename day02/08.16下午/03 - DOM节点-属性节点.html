@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset = "utf-8">
+        <meta name = "author" content = "张强">
+        <title>DOM-属性节点</title>
+        <style>
+            a{
+                border: 1px solid black;
+            }
+            .red-text{
+                color: red;
+                font-size: 40px;m
+                font-weight: bold;
+            }
+            .kaiti-text{
+                font-family: 楷体;
+            }
+            .italic-text{
+                font-style: italic;
+            }
+        </style>
+    </head>
+    <body onclick="">
+        <a class="red-text kaiti-text" href="https://www.baidu.com" title="打开百度首页" target="_blank" id="baidu">百度搜索[Shift+Alt+B]</a>
+        <script>
+            var link = document.getElementById('baidu');
+            // .attributes得到所有的属性
+            console.log(link.attributes);
+            // for循环输出link的全部属性
+            for(var i = 0; i < link.attributes.length; i++){
+                var attr = link.attributes[i];
+                // .name得到属性名
+                console.log(attr.name);
+                // .value得到属性的值
+                console.log(attr.value);
+            }
+            // .getAttribute()函数可以得到指定的属性值
+            var target = link.getAttribute('target');
+            console.log("*".repeat(30));
+            console.log(target);
+            // 也可以用下面的方式
+            console.log(link.target);
+            
+            // .setAttribute()设置指定属性的值
+            // 参数1表示属性名，参数2表示属性值
+            link.setAttribute('title', '百度一下，你就知道');
+            console.log(link.getAttribute('title'));
+            // 也可以通过下面这种形式设置title
+            link.title = '百度一下';
+            
+            // 设置快捷键,需要按下键盘的Shift + Alt + C
+            link.accessKey = 'C';
+           
+            // .removeAttribute()彻底删除某个属性
+            link.removeAttribute('href');
+            // 判断是否有指定的属性
+            console.log(link.hasAttribute('href'));
+            console.log(link.hasAttribute('title'));
+            // 判断是否有属性，有一个就算
+            console.log(link.hasAttributes());
+            console.log(document.body.hasAttributes());
+            
+            // 使用className来设置类名，重置类名
+            // 如果有类名就修改，如果没有就添加
+            link.className = 'blue-text kaiti-text';
+            console.log(link.getAttribute('class'));
+            // .classList.remove()移除类名
+            link.classList.remove('kaiti-text');
+            console.log(link.getAttribute('class'));
+            // .classList.add()添加类名，会累加类名
+            link.classList.add('italic-text');
+            // 切换样式类，如果有就去掉，如果没有就添加
+           link.classList.toggle('red-text');
+            
+            // 修改sytle
+            link.style.border = '1px solid blue';
+            link.style.padding = '10px';
+            link.style.fontFamily = '微软雅黑';
+            // 获得样式的值，只能够获得通过style设置的
+            console.log(link.style.border);
+            console.log(link.style.fontFamily);
+        </script>
+    </body>
+</html>
