@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>使用web存储</title>
+    <!--
+        该示例演示了如何添加、修改和清除本地存储中的数据
+        web存储允许我们在浏览器里保存简单的键/值数据，它和cookie很相似。
+        但是：web存储能保存的数据量更大。
+    -->
+    <style>
+        body>*{
+            float: left;
+        }
+        table{
+            border-collapse: collapse;
+            margin-left: 50px;
+
+        }
+        th, td{
+            padding: 4px;
+        }
+        th{
+            text-align: right;
+        }
+        input{
+            border: thin solid black;
+            padding: 5px;
+        }
+        label{
+            min-width: 50px;
+            display: inline-block;
+            text-align: right;
+        }
+        #countmsg, #buttons{
+            margin-left: 50px;
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <div>
+            <label for="">Key:</label>
+            <input id="key" type="text" placeholder="请输入key值">
+        </div>
+        <div>
+            <label for="">Value:</label>
+            <input id="value" type="text" placeholder="请输入value值">
+        </div>
+        <div id="buttons">
+            <button id="add">添加</button>
+            <button id="clear">清除</button>
+        </div>
+        <p id="countmsg">共有 <span id="count"></span> 项目</p>
+    </div>
+    <table id="data" border="1">
+        <tr>
+            <th>项目总计:</th>
+            <td id="count">-</td>
+        </tr>
+    </table>
+    <script>
+        // 
+        displayData();
+        // 
+        var buttons = document.getElementsByTagName("button");
+        for(var i = 0; i < buttons.length; i++){
+            buttons[i].onclick = handleButtonPress;
+        }
+        // 
+        function handleButtonPress(e){
+            switch(e.target.id){
+                case 'add':
+                    var key = document.getElementById("key").value;
+                    var value = document.getElementById("value").value;
+                    // localStorage是全局属性，可以通过它访问本地存储功能，该属性会返回一个Storage对象
+                    // setItem(1, 2)：添加一个新的键/值对，返回void
+                    localStorage.setItem(key, value);
+                    break;
+                case 'clear':
+                    // clear()：移除保存的键/值对，返回void
+                    localStorage.clear();
+                    break;
+            }
+            displayData();
+        }
+        // 显示数据
+        function displayData(){
+            var tableElem = document.getElementById("data");
+            tableElem.innerHTML = "";
+            // 返回已保存键/值对的数量，返回数值,如果保存两对数据则返回2
+            var itemCount = localStorage.length;
+            document.getElementById("count").innerHTML = itemCount;
+            for(var i = 0; i < itemCount; i++){
+                // localStorage.key(index)：取得指定索引的键，返回字符串
+                var key = localStorage.key(i);
+                // [key]：用数组的访问形式取得与指定键(key)关联的值(value)，返回字符串
+                var val = localStorage[key];
+                tableElem.innerHTML += "<tr><th>" + key + ":</th><td>" + val + "</td></tr>";
+            }
+        }
+    </script>
+</body>
+</html>
