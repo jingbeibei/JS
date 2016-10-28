@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+        <meta charset="utf-8">
+        <title>AF空白项目</title>
+        <meta name="author" content="张强">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta http-equiv="Pragma" content="no-cache">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel="stylesheet" href="libs/af/icons.css">
+        <link rel="stylesheet" href="libs/af/af.ui.css">
+        <script src="libs/jquery.js"></script>
+        <script src="libs/fastclick.js"></script>
+        <script src="libs/af/appframework.ui.js"></script>
+        <style>
+            
+        </style>
+    </head>
+    <body>
+        <div id="splashscreen" class="ui-loader heavy">
+            AF启动页
+            <br>
+            <br>
+            <span class="ui-icon ui-icon-loading spin"></span>
+            <h1>正在启动...</h1>
+        </div>
+        <div class="view" id="mainview">
+            <header>
+                <h1>默认标题</h1>
+            </header>
+ 
+            <div class="pages">
+                <div class="panel" data-title="标题一" id="first" data-selected="true">
+                    第一个页面
+                </div>
+                <div class="panel" data-title="标题二" id="second">
+                    第二个页面
+                </div>
+                <div class="panel" data-title="标题三" id="third">
+                    第三个页面
+                </div>
+            </div>
+
+            <footer>
+                <a href="#first" class="icon home">页面一</a>
+                <a href="#second" class="icon heart">页面二</a>
+                <a href="#third" class="icon html5">页面三</a>
+            </footer>
+        </div>
+    </body>
+</html>

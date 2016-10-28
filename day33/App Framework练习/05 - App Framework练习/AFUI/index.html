@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+        <meta charset="utf-8">
+        <title>AF空白项目</title>
+        <meta name="author" content="张强">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta http-equiv="Pragma" content="no-cache">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel="stylesheet" href="libs/af/icons.css">
+        <link rel="stylesheet" href="libs/af/af.ui.css">
+        <script src="libs/jquery.js"></script>
+        <script src="libs/fastclick.js"></script>
+        <script src="libs/af/appframework.ui.js"></script>
+        <script src="index.js"></script>
+        <style>
+            section{
+                height: 100%;
+                border: 1px solid silver;
+                background-color: white;
+                padding: 15px;
+                margin-top: 15px;
+            }
+            #rightMenu .backButton{
+                display: none;
+            }
+        </style>
+    </head>
+    <body class="ios7">
+        <div id="splashscreen" class="ui-loader heavy">
+            AF启动页
+            <br>
+            <br>
+            <span class="ui-icon ui-icon-loading spin"></span>
+            <h1>正在启动...</h1>
+        </div>
+        <div class="view" id="mainview">
+            <header>
+                <h1>默认标题</h1>
+                <a class="menuButton" data-right-menu="rightMenu" data-transition="cover"></a>
+            </header>
+ 
+            <div class="pages">
+                <div class="panel" data-title="标题一" id="first" data-selected="true">
+                    <ul class="list">
+                        <li>列表项1</li>
+                        <li>列表项2</li>
+                        <li>列表项3</li>
+                        <li>列表项4</li>
+                        <li>列表项5</li>
+                    </ul>
+                    <ul class="list inset">
+                        <li>列表项1</li>
+                        <li>列表项2</li>
+                        <li>列表项3</li>
+                    </ul>
+                </div>
+                <div class="panel" data-title="标题二" id="second">
+                    <section>
+                        第二个页面
+                        <a class="button" onclick="$.afui.drawer.show('#rightMenu', 'left', 'push')">
+                            打开侧滑菜单
+                        </a>
+                    </section>
+                </div>
+                <div class="panel" data-title="标题三" id="third" data-include="third.html">
+
+                </div>
+            </div>
+
+            <footer>
+                <a href="#first" class="icon home" data-transition="slide">页面一</a>
+                <a href="#second" class="icon heart" data-transition="pop">页面二</a>
+                <a href="#third" class="icon html5" data-transition="invoke">页面三</a>
+            </footer>
+            
+            <nav id="rightMenu">
+                <div class="view active">
+                    <header>
+                        <h1>侧滑菜单</h1>
+                    </header>
+                    <div class="pages">
+                        <div class="panel active" id="sideMenu1" data-title="侧滑菜单">
+                            <ul class="list">
+                                <li>列表项1</li>
+                                <li>列表项2</li>
+                                <li>列表项3</li>
+                                <li>列表项4</li>
+                                <li>列表项5</li>
+                            </ul>
+                            <a class="button" data-menu-close="">关闭侧滑</a>
+                        </div>
+                        <div class="panel active" id="sideMenu2" data-title="侧滑菜单">
+                            <ul class="list inset">
+                                <li>列表项1</li>
+                                <li>列表项2</li>
+                                <li>列表项3</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <footer>
+                        <a href="#sideMenu1" class="icon user pressed" data-transition="slide">项目1</a>
+                        <a href="#sideMenu2" class="icon message" data-transition="slide">项目2</a>
+                    </footer>
+                </div>
+            </nav>
+
+        </div>
+    </body>
+</html>

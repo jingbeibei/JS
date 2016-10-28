@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+        <meta charset="utf-8">
+        <title>准客早餐</title>
+        <meta name="author" content="张强">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta http-equiv="Pragma" content="no-cache">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel="stylesheet" href="libs/af/icons.css">
+        <link rel="stylesheet" href="libs/af/af.ui.css">
+        <link rel="stylesheet" href="libs/awesome/css/font-awesome.css">
+        <script src="libs/jquery.js"></script>
+        <script src="libs/fastclick.js"></script>
+        <script src="libs/af/appframework.ui.js"></script>
+        <script src="index.js"></script>
+        <style>
+            #splashscreen{
+                background-color: #f93 !important;
+                font-family: 华文行楷;
+            }
+            div.loading{
+                font-size: 40px;
+            }
+            div.loading:before{
+                top:5px;
+                left:0;
+            }
+            .backButton{
+                visibility: hidden;
+            }
+            #mainview header i{
+                position: absolute;
+                top: 13px;
+                left: 13px;
+                cursor: pointer;
+            }
+            #userMenu li{
+                color: #333;
+            }
+            #userMenu li i{
+                color: #39f;
+            }
+            #food li img{
+                width: 100%;
+            }
+            #food ul li{
+                padding: 2px;
+            }
+            #food li.loading{
+                text-align: center;
+                color: #f93;
+                padding: 20px;
+                font-size: 13px;
+            }
+        </style>
+    </head>
+    <body>
+        <!--启动界面-->
+        <div id="splashscreen" class="ui-loader heavy">
+            <br>
+            <br>
+            <br>
+            <br>
+            准客早餐
+            <br>
+            <br>
+            <div class="icon loading spin"></div>
+        </div>
+        <!--app页面主视图-->
+        <div class="view" id="mainview">
+            <header>
+                <!--$.afui.drawer.show('#right','right','push')打开右导航像推动效果-->
+                <i class="icon-reorder icon-large" onclick="$.afui.drawer.show('#userMenu', 'left', 'cover')"></i>
+                <h1>默认标题</h1>
+            </header>
+            <!--页面主体部分-->
+            <div class="pages">
+                <div class="panel" data-title="美食" id="food" data-include="pages/food.html" data-selected="true">
+                </div>
+                <div class="panel" data-title="发现" id="discover">
+                    第二个页面
+                </div>
+                <div class="panel" data-title="我的" id="mine">
+                    第三个页面
+                </div>
+
+                <div class="panel" id="shop" data-include="pages/shop.html"></div>
+            </div>
+            <!--页脚部分-->
+            <footer>
+                <a href="#food" data-transition="slide">
+                    <i class="icon-food icon-2x"></i><br>
+                    美食
+                </a>
+                <a href="#discover" data-transition="slide">
+                    <i class="icon-gift icon-2x"></i><br>
+                    发现
+                </a>
+                <a href="#mine" data-transition="slide">
+                    <i class="icon-user icon-2x"></i><br>
+                    我的
+                </a>
+            </footer>
+            <!--导航部分-->
+            <nav id="userMenu">
+                <div class="view active">
+                    <header>
+                        <h1>张强</h1>
+                    </header>
+                    <div class="pages">
+                        <div class="panel active" data-title="张强">
+                            <ul class="list">
+                                <li>
+                                    <i class="icon-credit-card"></i>
+                                    &nbsp;加入会员
+                                </li>
+                                <li>
+                                    <i class="icon-heart"></i>
+                                    &nbsp;我的最爱
+                                </li>
+                                <li>
+                                    <i class="icon-qrcode"></i>
+                                    &nbsp;扫一扫
+                                </li>
+                                <li>
+                                    <i class="icon-cog"></i>
+                                    &nbsp;我的设置
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </body>
+</html>

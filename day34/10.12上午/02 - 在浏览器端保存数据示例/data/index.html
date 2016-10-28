@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta charset="utf-8">
+        <meta name="author" content="张强">
+        <title>浏览器端保存数据</title>
+        <style>
+            
+        </style>
+    </head>
+    <body>
+        <a href="其它页面.html">跳转到其它页面</a>
+        <a href="sessionStorage.html">跳转到sessionStorage页面</a>
+        
+        <script>
+            
+            for(var i = 0; i < sessionStorage.length; i++){
+                var key = sessionStorage.key(i)
+                console.log('%s : %s', key, sessionStorage.getItem(key))
+            }
+            
+            var v = sessionStorage.getItem('name')
+            console.log(v)
+            
+            var v = sessionStorage.getItem('age')
+            console.log(v)
+            
+            var v = sessionStorage.getItem('p')
+            console.dir(v)
+            var obj = JSON.parse(v)
+            console.log(obj.name)
+        </script>
+    </body>
+</html>
