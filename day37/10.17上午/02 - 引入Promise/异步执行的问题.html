@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta charset="utf-8">
+        <meta name="author" content="张强">
+        <title>异步执行的问题</title>
+        <style>
+            
+        </style>
+    </head>
+    <body>
+        <script>
+            var data = {name: 'ZhangSan', age: 6};
+            console.log(data.name);
+
+            // 省略若干行代码
+
+            console.log(data.age)
+            // 以上代码是同步执行的，data是被同步创建出来
+            // 在data创建的代码之后可以立即使用data，因为此时data必定被创建好了
+            // 经过若干行代码之后或经过一段时间之后，还可再次
+            // 使用data，因为data创建后会一直存在（除非它不在全局域或被delete）
+            // 以上代码是非常自然和直观的，而异步代码就很难做到这一点
+
+            /************************************** */
+
+            var data = null;
+
+            setTimeout(function(){
+                // 模拟一个典型的异步：如网络请求、磁盘读写
+                console.log('不知道此处的代码什么时候被执行')
+                data = '这里模拟网络请求或磁盘读取得到的数据'
+
+                // 在这个回调函数内部使用data是没有问题的
+                // 但如果想在此回调函数之外使用data就会非常困难
+            }, Math.random() * 2000 + 2000);
+
+            // 在这里显然不能得到异步回调函数内部赋给data的值
+            console.log(data);
+
+            // 没有办法判断异步任务什么时间结束！
+
+            // 如果试图使用一个循环去等待data被赋值，
+            // 将会导致JS陷入死循环，因JS是单线程的
+            // 在执行下面的循环时，根本无法抽身去执行上面的
+            // 回调函数，所以data永远无法被赋值
+            //while(!data){
+            //    console.log('data是null，所以等待');
+            //}
+
+            //console.log(data);
+
+            // // 可以考虑使用定时器每隔一段时间检查一次
+             var interval = setInterval(function(){
+                 if(data){
+                     clearInterval(interval)
+                     console.log(data)
+                 }
+             }, 500)
+        </script>
+    </body>
+</html>

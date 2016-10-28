@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+        <meta charset="utf-8">
+        <title>准客早餐</title>
+        <meta name="author" content="张强">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta http-equiv="Pragma" content="no-cache">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel="stylesheet" href="libs/af/icons.css">
+        <link rel="stylesheet" href="libs/af/af.ui.css">
+        <link rel="stylesheet" href="libs/awesome/css/font-awesome.css">
+        <script src="libs/jquery.js"></script>
+        <script src="libs/fastclick.js"></script>
+        <script src="libs/af/appframework.ui.js"></script>
+        <script src="index.js"></script>
+        <script src="user.js"></script>
+        <style>
+            #splashscreen{
+                background-color: #f93 !important;
+                font-family: 华文行楷;
+            }
+            div.loading{
+                font-size: 40px;
+            }
+            div.loading:before{
+                top:5px;
+                left:0;
+            }
+            /*.backButton{
+                visibility: hidden;
+            }*/
+            #mainview header i{
+                position: absolute;
+                top: 13px;
+                right: 13px;
+                cursor: pointer;
+            }
+            #userMenu li{
+                color: #333;
+            }
+            #userMenu li i{
+                color: #39f;
+            }
+            #food li img{
+                width: 100%;
+            }
+            #food ul li{
+                padding: 2px;
+            }
+            #food li.loading{
+                text-align: center;
+                color: #f93;
+                padding: 20px;
+                font-size: 13px;
+            }
+            #afui_mask .loading{
+                text-align: center;
+            }
+            .ui-loader{
+                background-color: rgba(0, 0, 0, 0.7);
+            }
+            .ui-loader h1{
+                font-weight: normal;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="splashscreen" class="ui-loader heavy">
+            <br>
+            <br>
+            <br>
+            <br>
+            准客早餐
+            <br>
+            <br>
+            <div class="icon loading spin"></div>
+        </div>
+        <div class="view" id="mainview">
+            <header>
+                <!--<i class="icon-reorder icon-large" onclick="$.afui.drawer.show('#userMenu', 'left', 'cover')"></i>-->
+                <h1>默认标题</h1>
+                <!--使用代码在panel之间跳转 $.afui.loadContent()
+                第1个参数：要跳转到的panel
+                第2个参数：是否使用一个新的view，通常是false
+                第3个参数：是否反转动画，通常是false
+                第4个参数：panel切换的动画效果
+                第5个参数：触发跳转的标签元素-->
+                <i class="icon-user icon-large" onclick="$.afui.loadContent('#signin', false, false, 'slide', this)"></i>
+            </header>
+ 
+            <div class="pages">
+                <div class="panel" data-title="美食" data-hide-back="true" id="food" data-include="pages/food.html" data-selected="true">
+                </div>
+                <div class="panel" data-title="发现" data-hide-back="true" id="discover">
+                    第二个页面
+                </div>
+                <div class="panel" data-title="我的" data-hide-back="true" id="mine">
+                    第三个页面
+                </div>
+
+                <div class="panel" id="signin" data-include="pages/signin.html"></div>
+                <div class="panel" id="shop" data-include="pages/shop.html"></div>
+            </div>
+
+            <footer>
+                <a href="#food" data-transition="slide">
+                    <i class="icon-food icon-2x"></i><br>
+                    美食
+                </a>
+                <a href="#discover" data-transition="slide">
+                    <i class="icon-gift icon-2x"></i><br>
+                    发现
+                </a>
+                <a href="#mine" data-transition="slide">
+                    <i class="icon-user icon-2x"></i><br>
+                    我的
+                </a>
+            </footer>
+
+            <nav id="userMenu">
+                <div class="view active">
+                    <header>
+                        <h1>张强</h1>
+                    </header>
+                    <div class="pages">
+                        <div class="panel active" data-title="张强">
+                            <ul class="list">
+                                <li>
+                                    <i class="icon-credit-card"></i>
+                                    &nbsp;加入会员
+                                </li>
+                                <li>
+                                    <i class="icon-heart"></i>
+                                    &nbsp;我的最爱
+                                </li>
+                                <li>
+                                    <i class="icon-qrcode"></i>
+                                    &nbsp;扫一扫
+                                </li>
+                                <li>
+                                    <i class="icon-cog"></i>
+                                    &nbsp;我的设置
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+        </div>
+    </body>
+</html>

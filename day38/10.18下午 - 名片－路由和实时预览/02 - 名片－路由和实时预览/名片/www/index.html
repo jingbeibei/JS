@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>我的名片</title>
+        <link rel="stylesheet" href="main.css">
+    </head>
+    <body>
+        <main>
+            <article>
+                <img class="logo" src="images/logo.png" />
+                <h1>张强<small>HTML5讲师</small></h1>
+                <address>
+                    <p class="addr">郑州市经开区河南通讯产业园6楼西南四</p>
+                    <p class="tel">13803845875</p>
+                    <p class="qq">517545951</p>
+                    <p class="email">zhangqiang@zhiyou100.com</p>
+                </address>
+                <img class="pic" src="images/xrk.png" />
+            </article>
+            <aside>
+                <div class="photo"></div>
+                <p>学好一门技术的唯一方法是使用它，在使用它的过程中才能真正学会它。
+                如果能够在使用它的过程中体会到乐趣，就是学习的最佳状态。</p>
+            </aside>
+        </main>
+        <div class="edit">编辑</div>
+        <form action="#">
+            <div>姓名：</div>
+            <div>
+                <input type="text" name="name" autofocus placeholder="请输入姓名">
+            </div>
+            <div>职位：</div>
+            <div>
+                <input type="text" name="title" placeholder="请输入职位">
+            </div>
+            <div>地址：</div>
+            <div>
+                <input type="text" name="address" placeholder="请输入详细地址">
+            </div>
+            <div>手机号：</div>
+            <div>
+                <input type="text" name="phone" placeholder="请输入手机号">
+            </div>
+            <div>QQ号：</div>
+            <div>
+                <input type="text" name="qq" placeholder="请输入QQ号">
+            </div>
+            <div>电子邮箱：</div>
+            <div>
+                <input type="text" name="email" placeholder="请输入电子邮箱地址">
+            </div>
+            <div>介绍：</div>
+            <div>
+                <textarea name="description" placeholder="请输入个人简介"></textarea>
+            </div>
+            <div>
+                <input type="submit" value="保存">
+            </div>
+        </form>
+        <script data-main="index" src="libs/require.js"></script>
+    </body>
+</html>

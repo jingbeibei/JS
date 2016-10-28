@@ -1,0 +1,70 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+}
+header {
+  background-color: #39f;
+  color: white;
+  height: 2.8rem;
+  line-height: 2.8rem;
+  text-align: center;
+}
+form {
+  margin: 0.5rem;
+}
+input[type=text] {
+  border: 1px solid #39f;
+  height: 2.4rem;
+  padding: 0.7rem;
+  width: 100%;
+  border-radius: 0.3rem;
+  margin: 0.25rem 0;
+}
+input[type=text]:focus {
+  box-shadow: inset 1px 1px 2px gray;
+}
+button {
+  border: 1px solid #198cff;
+  background-color: #198cff;
+  color: white;
+  height: 2.4rem;
+  padding: 0.4rem;
+  width: 100%;
+  border-radius: 0.3rem;
+  margin: 0.25rem 0;
+  font-size: 0.9rem;
+}
+section {
+  margin: 0.5rem 0.5rem 3rem 0.5rem;
+  display: none;
+}
+dl {
+  margin: 1rem 0;
+  font-size: 0.8rem;
+  color: #333;
+}
+dt {
+  float: left;
+}
+dd {
+  float: right;
+}
+section > div {
+  clear: both;
+}
+.zhichu {
+  color: red;
+}
+.zhichu > dd:before {
+  content: '-';
+}
+.hr {
+  border-bottom: 1px solid gray;
+  position: relative;
+  top: 0.5rem;
+}
+.result {
+  font-weight: bold;
+}
