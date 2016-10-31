@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Angular入门示例-jQuery版</title>
+    <style>
+        input{
+            width: 50px;
+        }
+    </style>
+</head>
+<body>
+    <form action="#">
+        <input type="number"> +
+        <input type="number"> =
+        <output></output>
+    </form>
+    <script src="libs/jquery.js"></script>
+    <script>
+        var inputA = $('input:eq(0)');
+        var inputB = $('input:eq(1)');
+        var output = $('output');
+        var a = 1, b = 1;
+
+        inputA.val(a);
+        inputB.val(b);
+        function add(){
+            output.text(a + b);
+        }
+
+        add();
+
+        $('input:eq(0)').on('input', function(){
+            a = parseInt($(this).val()) || 0;
+            add();
+        })
+        $('input:eq(1)').on('input', function(){
+            b = parseInt($(this).val()) || 0;
+            add();
+        })
+    </script>
+</body>
+</html>

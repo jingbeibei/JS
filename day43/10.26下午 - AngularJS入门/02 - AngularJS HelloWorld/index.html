@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<!--
+    ng-app告诉AngularJS处理整个HTML页面并引导应用
+-->
+<html ng-app>
+<head>
+    <meta charset="UTF-8">
+    <title>Angular HelloWorld</title>
+    <script src="angular.js"></script>
+</head>
+<body>
+    <!--
+        <input ng-model="yourname">绑定到一个叫yourname的模型变量
+    -->
+    尊姓大名：<input type="text" ng-model="yourname" placeholder="请输入姓名">
+    <hr>
+    <!--
+        {{}}表示将yourname模型变量添加到问候语文本
+        AngularJS双向数据绑定的概念：input的任何改变会立即反映到模型变量，
+        模型变量的任何改变都会立即反映到问候语文本中
+    -->
+    Hello {{yourname || 'World'}}!
+</body>
+</html>

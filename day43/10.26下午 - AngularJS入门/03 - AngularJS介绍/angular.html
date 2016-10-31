@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AngularJS入门示例</title>
+    <script src="angular.js"></script>
+    <style>
+        input{
+            width: 50px;
+        }
+    </style>
+</head>
+<body>
+    <!--
+        ng-init：初始化AngularJS应该程序变量
+    -->
+    <form action="#" ng-app="" ng-init="a=1; b=1">
+        <!--
+            ng-model: 把元素值(例如input输入的值)绑定到应该程序
+        -->
+        <input type="number" ng-model="a"> +
+        <input type="number" ng-model="b"> =
+        <!--
+            AngularJS的表达式写到{{}}内
+        -->
+        <output>{{a + b}}</output>
+    </form>
+</body>
+</html>
+<!--
+    这个例子没有写js代码
+    体现了AngularJS的主要特点：
+    1 推崇声明式而非命令式语言，体现出了AngularJS对HTML的扩展
+    2 页面即是模板，模板也是页面，模板自动解析(绑定)
+      而且是双向绑定，会自动监视跟踪值的变化
+-->

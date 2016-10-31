@@ -1,0 +1,16 @@
+{
+  "name": "zhunke",
+  "version": "1.0.0",
+  "description": "App Framework练习项目\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D \u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D",
+  "main": "server.js",
+  "scripts": {
+    "test": "node server.js"
+  },
+  "author": "张强",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.1",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.13.4"
+  }
+}

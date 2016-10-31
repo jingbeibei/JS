@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AngularJS入门示例-Backbone版</title>
+    <style>
+        input{
+            width: 50px;
+        }
+    </style>
+</head>
+<body>
+    <form action="#">
+        <input type="number"> +
+        <input type="number"> =
+        <output></output>
+    </form>
+    <script src="libs/jquery.js"></script>
+    <script src="libs/underscore.js"></script>
+    <script src="libs/backbone.js"></script>
+    <script>
+        var Model = Backbone.Model.extend({
+            defaults:{
+                a:1,
+                b:1
+            },
+            getResult:function(){
+                return this.get('a') + this.get('b');
+            }
+        })
+        var View = Backbone.View.extend({
+            el:$('form')[0],
+            events:{
+                'input input:eq(0)': 'inputA',
+                'input input:eq(1)': 'inputB'
+            },
+            initialize:function(){
+                this.$('input:eq(0)').val(this.model.get('a'));
+                this.$('input:eq(1)').val(this.model.get('b'));
+                this.render();
+            },
+            inputA:function(ev){
+                this.model.set('a', parseInt(this.$(ev.target).val()) || 0);
+                this.render();
+            },
+            inputB:function(ev){
+                this.model.set('b', parseInt(this.$(ev.target).val()) || 0);
+                this.render();
+            },
+            render:function(){
+                this.$('output').text(this.model.getResult());
+            }
+        })
+        new View({model: new Model()});
+    </script>
+</body>
+</html>

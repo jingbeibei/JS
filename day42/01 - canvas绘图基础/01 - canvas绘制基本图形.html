@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset = "utf-8">
+        <meta name = "author" content = "张强">
+        <title>canvas绘图</title>
+        <style>
+            
+        </style>
+    </head>
+    <body>
+        <!--canvas本身没有绘图能力，借助js来实现绘图-->
+        <canvas id="drawingSpace" width="1000" height="600"></canvas>
+        <!---->
+        <script>
+            // 1 正方形
+            // getContext()返回一个用于在画布上绘图的环境，参数指的是绘图的类型 2d二维图
+            var rect = document.getElementById('drawingSpace').getContext('2d');
+            // fillRect(x, y, width, height) 绘制的默认颜色是黑色
+            rect.fillStyle = '#FF0000';
+            rect.fillRect(100, 100, 100, 100);
+            
+            // 2 直线
+            var c = document.getElementById('drawingSpace');
+            var ctx = c.getContext('2d');
+            // moveTo(x, y)线条的开始坐标
+            ctx.moveTo(150, 0);
+            // lineTo(x, y)结束坐标
+            ctx.lineTo(600, 150);
+            // stroke() 方法会实际地绘制出通过 moveTo() 和 lineTo() 方法定义的路径。默认颜色是黑
+            ctx.stroke();
+            
+            // 3 圆形
+            var cr = document.getElementById('drawingSpace');
+            var ctx2 = c.getContext('2d');
+            ctx2.beginPath();
+            // arc(x, y, r, sAngle, eAngle)
+            // x, y圆心的坐标 r 半径 sAngle开始角度 eAngle结束角度
+            ctx2.arc(450, 100, 90, 0, 2 * Math.PI);
+            
+            // 绘制图形
+            ctx2.stroke();
+        </script>
+    </body>
+</html>
