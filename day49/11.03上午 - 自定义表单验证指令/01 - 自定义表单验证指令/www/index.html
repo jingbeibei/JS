@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta charset="utf-8">
+        <meta name="author" content="张强">
+        <title>自定义指令-自定义表单验证</title>
+        <script src="libs/angular.js"></script>
+        <script src="index.js"></script>
+        <style>
+            
+        </style>
+    </head>
+    <body ng-app="Valid">
+        <form name="form">
+            <input type="text" name="petname" ng-model="petname" zy-user-not-exists 
+                ng-model-options="{debounce: 1000}"
+                required placeholder="请输入昵称">
+            <!--ng-model-options="{updateOn: 'blur'}"-->
+            <!--正在进行的异步验证会使验证进入pending状态
+            可以在$pending中观察到正在penging状态验证规则
+            如果异步验证失败，则会在$error中添加一个失败项
+            异步验证通常比较消耗资料，需要配合ng-model-options
+            使用，如设置updateOn:blur可以在失去焦点时才触发
+            验证，或设置debounce:1000在用户输入停止一段时间
+            后才开始验证-->
+            <span ng-show="form.petname.$pending.zyUserNotExists">正在验证...</span>
+            <span ng-show="form.petname.$error.zyUserNotExists">用户名已注册！</span>
+            <br>
+            <input type="password" name="password" ng-model="password" required placeholder="请输入密码"><br>
+            <input type="password" name="passwordConfirm" ng-model="passwordConfirm" zy-equal-to="password" required placeholder="请再次输入密码">
+            <span ng-show="form.passwordConfirm.$error.zyEqualTo">两次填写的密码不一致！</span>
+            <br>
+            <input type="submit" value="注册">
+        </form>
+    </body>
+</html>

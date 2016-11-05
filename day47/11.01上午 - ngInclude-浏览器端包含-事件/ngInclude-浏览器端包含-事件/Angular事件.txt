@@ -1,0 +1,17 @@
+Angular事件
+
+Angular的部分指令会触发事件，这种事件不同于DOM事件：
+DOM事件是在节点树中以挖洞（捕获）和冒泡的方式传播的。
+而Angular事件是在Angular作用域中以向上发射（Emit）或向下
+广播（Broadcast）的方式传播的。
+
+它们传播的路径不一样，传播的方式也不一样。
+
+监听Angular事件的方法：
+$scope.$on('事件名', 事件监听函数)
+
+向上发射Angular事件的方法：
+$scope.$emit('事件名')
+
+向下广播Angular事件的方法：
+$scope.$broadcast('事件名')
